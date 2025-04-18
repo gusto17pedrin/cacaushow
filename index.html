@@ -45,11 +45,7 @@
           .then((data) => {
             sessionStorage.setItem("userId", data.userId);
           })
-          .catch((error) => {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "dataLayerError",
-              error: "Data Layer Error: " + error.message,
+         ge,
             });
           });
       }
@@ -968,13 +964,7 @@
                   });
                 }
               }
-            } catch (error) {
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({
-                event: "dataLayerError",
-                error: "listEvents - pushEvents: " + error.message,
-              });
-            }
+           
           }
         </script>
 <script>
@@ -1334,17 +1324,7 @@
                           </script>
 <div class="product-tile">
 <script>
-                              function pushSelectItem(productEvent) {
-                                try {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push(productEvent);
-                                } catch (error) {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push({
-                                    event: "dataLayerError",
-                                    error:
-                                      "selectItem - pushSelectItem: " +
-                                      error.message,
+                             
                                   });
                                 }
                               }
@@ -1544,18 +1524,7 @@
                           </script>
 <div class="product-tile">
 <script>
-                              function pushSelectItem(productEvent) {
-                                try {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push(productEvent);
-                                } catch (error) {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push({
-                                    event: "dataLayerError",
-                                    error:
-                                      "selectItem - pushSelectItem: " +
-                                      error.message,
-                                  });
+                              
                                 }
                               }
                             </script>
@@ -1754,17 +1723,7 @@
                           </script>
 <div class="product-tile">
 <script>
-                              function pushSelectItem(productEvent) {
-                                try {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push(productEvent);
-                                } catch (error) {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push({
-                                    event: "dataLayerError",
-                                    error:
-                                      "selectItem - pushSelectItem: " +
-                                      error.message,
+                            
                                   });
                                 }
                               }
@@ -1964,17 +1923,7 @@
                           </script>
 <div class="product-tile">
 <script>
-                              function pushSelectItem(productEvent) {
-                                try {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push(productEvent);
-                                } catch (error) {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push({
-                                    event: "dataLayerError",
-                                    error:
-                                      "selectItem - pushSelectItem: " +
-                                      error.message,
+                              
                                   });
                                 }
                               }
@@ -2175,17 +2124,7 @@
                           </script>
 <div class="product-tile">
 <script>
-                              function pushSelectItem(productEvent) {
-                                try {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push(productEvent);
-                                } catch (error) {
-                                  window.dataLayer = window.dataLayer || [];
-                                  window.dataLayer.push({
-                                    event: "dataLayerError",
-                                    error:
-                                      "selectItem - pushSelectItem: " +
-                                      error.message,
+                              
                                   });
                                 }
                               }
@@ -2478,7 +2417,7 @@
         Produto adicionado ao carrinho
       </div>
 
-<div class="error-messaging"></div>
+<div class="-messaging"></div>
 <div class="modal-background"></div>
 <!-- End content-asset -->
 <!--[if lt IE 10]>
