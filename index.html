@@ -1,0 +1,2578 @@
+<!DOCTYPE html><html lang=""><head>
+
+      <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+    </script>
+<script defer="" src="js/main.js" type="text/javascript"></script>
+<script defer="" src="js/search.js" type="text/javascript"></script>
+<!--<![endif]-->
+<meta charset="utf-8">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Busca | Loja Cacau Show</title>
+<meta content="Busca de chocolates" name="description">
+<meta content="Cacau Show" name="keywords">
+<link href="images/favicon.ico" rel="icon" type="image/png">
+<script>
+      var storedUserId = sessionStorage.getItem("userId") || undefined,
+        pathName = window.location.pathname,
+        pageTypeByPathname = pathName.split("index.html")[1],
+        pageTypeDictionary = {
+          home: "home",
+          categoria: "category",
+          produto: "product",
+          busca: "internalsitesearch",
+          carrinho: "cart",
+          checkout: "checkout",
+        };
+
+      if (!storedUserId) {
+        fetch(
+          "/on/demandware.store/Sites-CacauShow-Site/default/Account-PageView"
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok fetching user id");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            sessionStorage.setItem("userId", data.userId);
+          })
+          .catch((error) => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "dataLayerError",
+              error: "Data Layer Error: " + error.message,
+            });
+          });
+      }
+
+      (function pushPageView(storedUserId) {
+        const currentPage = window.location.pathname;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "virtualPageView",
+          currentPage: currentPage,
+          pageType: pageTypeDictionary[pageTypeByPathname],
+          pageTitle: document.title,
+          previousPage: getPreviousPage(currentPage),
+          userID: storedUserId,
+        });
+      })(storedUserId);
+
+      function getPreviousPage(currentPage) {
+        const previousPage = window.sessionStorage.getItem(
+          "dataLayer/previousPage"
+        );
+        window.sessionStorage.setItem("dataLayer/previousPage", currentPage);
+        return previousPage;
+      }
+    </script>
+<link href="css/global.css" rel="stylesheet">
+<link href="css/search.css" rel="stylesheet">
+<meta content="HV1li6dst_6LWYxjo7e_ada038iVt0t2L_nZE7TmS1Y" name="google-site-verification">
+<meta content="52tht2pe7s2lmpwrlrz87cj928yooi" name="facebook-domain-verification">
+<script>
+      (function () {
+        window.Constants = {
+          AVAIL_STATUS_IN_STOCK: "IN_STOCK",
+          AVAIL_STATUS_PREORDER: "PREORDER",
+          AVAIL_STATUS_BACKORDER: "BACKORDER",
+          AVAIL_STATUS_NOT_AVAILABLE: "NOT_AVAILABLE",
+        };
+        window.Resources = {
+          I_AGREE: "global.i_agree",
+          CLOSE: "global.close",
+          CEP: null,
+          BASIC_ADDRESS: null,
+        };
+        window.Urls = {
+          homeShow: "/home",
+          continueUrl:
+            "https://www.cacaushow.com.br/on/demandware.store/Sites-CacauShow-Site/default/Page-AppResources",
+          staticPath:
+            "/on/demandware.static/Sites-CacauShow-Site/-/default/v1708684979785/",
+          giftRegAdd:
+            "https://www.cacaushow.com.br/on/demandware.store/Sites-CacauShow-Site/default/Address-GetAddressDetails?addressID=",
+          getAvailability:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Product-GetAvailability",
+          cartGet: "/on/demandware.store/Sites-CacauShow-Site/default/Cart-Get",
+          cartItems:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Cart-Items",
+          WishlistGet:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Wishlist-GetListJson",
+          removeImg:
+            "/on/demandware.static/Sites-CacauShow-Site/-/default/v1708684979785/images/icon_remove.gif",
+          storeDetails:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Stores-Details?page=storelocator",
+          webProtocolHost: "https://www.cacaushow.com.br",
+          addToCart:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Cart-AddProduct",
+          removeFromCart:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Cart-RemoveProductLineItem",
+          addToWishlist:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Wishlist-AddProduct",
+          removeFromWishlist:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Wishlist-RemoveProduct?pid=",
+          loginShow: "/login",
+          changeAddress:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Address-Change",
+          removeCoupom:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Cart-RemoveCouponLineItem?uuid=",
+          getPaymentMethods:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Adyen-GetPaymentMethods",
+          addGiftCertificate:
+            "/on/demandware.store/Sites-CacauShow-Site/default/PaymentGiftCertificate-Add",
+          checkBalance:
+            "/on/demandware.store/Sites-CacauShow-Site/default/PaymentGiftCertificate-GetBalance",
+          addCashback:
+            "/on/demandware.store/Sites-CacauShow-Site/default/CheckoutServices-SubmitPayment",
+          updateQuantityCart:
+            "/on/demandware.store/Sites-CacauShow-Site/default/Cart-UpdateQuantity",
+        };
+        window.SitePreferences = {
+          postalCodesBR:
+            '{"postalCodesBR":[\n{"state":"ac", "postalFrom": 69900000, "postalTo" : 69999999},\n{"state":"al", "postalFrom": 57000000, "postalTo" : 57999999},\n{"state":"am", "postalFrom": 69000000, "postalTo" : 69299999},\n{"state":"am", "postalFrom": 69400000, "postalTo" : 69899999},\n{"state":"ap", "postalFrom": 68900000, "postalTo" : 68999999},\n{"state":"ba", "postalFrom": 40000000, "postalTo" : 48999999},\n{"state":"ce", "postalFrom": 60000000, "postalTo" : 63999999},\n{"state":"df", "postalFrom": 70000000, "postalTo" : 72799999},\n{"state":"df", "postalFrom": 73000000, "postalTo" : 73699999},\n{"state":"es", "postalFrom": 29000000, "postalTo" : 29999999},\n{"state":"go", "postalFrom": 72800000, "postalTo" : 72999999},\n{"state":"go", "postalFrom": 73700000, "postalTo" : 76799999},\n{"state":"ma", "postalFrom": 65000000, "postalTo" : 65999999},\n{"state":"mg", "postalFrom": 30000000, "postalTo" : 39999999},\n{"state":"ms", "postalFrom": 79000000, "postalTo" : 79999999},\n{"state":"mt", "postalFrom": 78000000, "postalTo" : 78899999},\n{"state":"pa", "postalFrom": 66000000, "postalTo" : 68899999},\n{"state":"pb", "postalFrom": 58000000, "postalTo" : 58999999},\n{"state":"pe", "postalFrom": 50000000, "postalTo" : 56999999},\n{"state":"pi", "postalFrom": 64000000, "postalTo" : 64999999},\n{"state":"pr", "postalFrom": 80000000, "postalTo" : 87999999},\n{"state":"rs", "postalFrom": 20000000, "postalTo" : 28999999},\n{"state":"rn", "postalFrom": 59000000, "postalTo" : 59999999},\n{"state":"ro", "postalFrom": 76800000, "postalTo" : 76999999},\n{"state":"rr", "postalFrom": 69300000, "postalTo" : 69399999},\n{"state":"rs", "postalFrom": 90000000, "postalTo" : 99999999},\n{"state":"sc", "postalFrom": 88000000, "postalTo" : 89999999},\n{"state":"se", "postalFrom": 49000000, "postalTo" : 49999999},\n{"state":"sp", "postalFrom": 1000000, "postalTo" : 19999999},\n{"state":"to", "postalFrom": 77000000, "postalTo" : 77999999}\n]}',
+          priceTables:
+            '{"priceTables":[\n{"priceBookID": "df-sale-prices", "states": ["df"]},\n{"priceBookID": "go-sale-prices", "states": ["go"]},\n{"priceBookID": "mg-sale-prices", "states": ["mg"]},\n{"priceBookID": "pr-sale-prices", "states": ["pr"]},\n{"priceBookID": "z1-sale-prices", "states": ["sp"]},\n{"priceBookID": "z2-sale-prices", "states": ["es","ms","mt","rs","sc"]},\n{"priceBookID": "z3-sale-prices", "states": ["rj"]},\n{"priceBookID": "z4-sale-prices", "states": ["ac","am","ap","rr"]},\n{"priceBookID": "z5-sale-prices", "states": ["al","ba","ce","ma","pa","pb","pe","pi","rn","ro","se","to"]}\n]}',
+        };
+      })();
+    </script>
+<style>
+      /*
+.grecaptcha-badge {
+    bottom: 100px !important;
+}*/
+
+      /* Move badge to the left side */
+      .grecaptcha-badge {
+        width: 70px !important;
+        overflow: hidden !important;
+        transition: all 0.3s ease !important;
+        left: 4px !important;
+      }
+
+      .grecaptcha-badge:hover {
+        width: 256px !important;
+      }
+    </style>
+<link href="css/skin.css" rel="stylesheet">
+</head><body class="" data-current-store="null"><input class="js-cart-abandonment-settings" data-capture-cart-url="/on/demandware.store/Sites-CacauShow-Site/default/CartAbandonment-CaptureCart" data-is-enabled="true" type="hidden">
+<link href="busca9dd7.html?cgid=undefined" rel="canonical">
+<script type="text/javascript">
+      //<!--
+      /* <![CDATA[ (head-active_data.js) */
+      var dw = window.dw || {};
+      dw.ac = {
+        _analytics: null,
+        _events: [],
+        _category: "",
+        _searchData: "",
+        _anact: "",
+        _anact_nohit_tag: "",
+        _analytics_enabled: "true",
+        _timeZone: "Etc/GMT+3",
+        _capture: function (configs) {
+          if (Object.prototype.toString.call(configs) === "[object Array]") {
+            configs.forEach(captureObject);
+            return;
+          }
+          dw.ac._events.push(configs);
+        },
+        capture: function () {
+          dw.ac._capture(arguments);
+          // send to CQ as well:
+          if (window.CQuotient) {
+            window.CQuotient.trackEventsFromAC(arguments);
+          }
+        },
+        EV_PRD_SEARCHHIT: "searchhit",
+        EV_PRD_DETAIL: "detail",
+        EV_PRD_RECOMMENDATION: "recommendation",
+        EV_PRD_SETPRODUCT: "setproduct",
+        applyContext: function (context) {
+          if (
+            typeof context === "object" &&
+            context.hasOwnProperty("category")
+          ) {
+            dw.ac._category = context.category;
+          }
+          if (
+            typeof context === "object" &&
+            context.hasOwnProperty("searchData")
+          ) {
+            dw.ac._searchData = context.searchData;
+          }
+        },
+        setDWAnalytics: function (analytics) {
+          dw.ac._analytics = analytics;
+        },
+        eventsIsEmpty: function () {
+          return 0 == dw.ac._events.length;
+        },
+      };
+      /* ]]> */
+      // -->
+    </script>
+<script type="text/javascript">
+      //<!--
+      /* <![CDATA[ (head-cquotient.js) */
+      var CQuotient = (window.CQuotient = {});
+      CQuotient.clientId = "bfjd-CacauShow";
+      CQuotient.realm = "BFJD";
+      CQuotient.siteId = "CacauShow";
+      CQuotient.instanceType = "prd";
+      CQuotient.locale = "default";
+      CQuotient.
+      CQuotient.activities = [];
+      CQuotient.cqcid = "";
+      CQuotient.cquid = "";
+      CQuotient.cqeid = "";
+      CQuotient.cqlid = "";
+      CQuotient.apiHost = "api.cquotient.com";
+      /* Turn this on to test against Staging Einstein */
+      /* CQuotient.useTest= true; */
+      CQuotient.useTest = "true" === "false";
+      CQuotient.initFromCookies = function () {
+        var ca = document.cookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") c = c.substring(1, c.length);
+          if (c.indexOf("cqcid=") == 0) {
+            CQuotient.cqcid = c.substring("cqcid=".length, c.length);
+          } else if (c.indexOf("cquid=") == 0) {
+            var value = c.substring("cquid=".length, c.length);
+            if (value) {
+              var split_value = value.split("|", 3);
+              if (split_value.length > 0) {
+                CQuotient.cquid = split_value[0];
+              }
+              if (split_value.length > 1) {
+                CQuotient.cqeid = split_value[1];
+              }
+              if (split_value.length > 2) {
+                CQuotient.cqlid = split_value[2];
+              }
+            }
+          }
+        }
+      };
+      CQuotient.getCQCookieId = function () {
+        if (window.CQuotient.cqcid == "") window.CQuotient.initFromCookies();
+        return window.CQuotient.cqcid;
+      };
+      CQuotient.getCQUserId = function () {
+        if (window.CQuotient.cquid == "") window.CQuotient.initFromCookies();
+        return window.CQuotient.cquid;
+      };
+      CQuotient.getCQHashedEmail = function () {
+        if (window.CQuotient.cqeid == "") window.CQuotient.initFromCookies();
+        return window.CQuotient.cqeid;
+      };
+      CQuotient.getCQHashedLogin = function () {
+        if (window.CQuotient.cqlid == "") window.CQuotient.initFromCookies();
+        return window.CQuotient.cqlid;
+      };
+      CQuotient.trackEventsFromAC = function (/* Object or Array */ events) {
+        try {
+          if (Object.prototype.toString.call(events) === "[object Array]") {
+            events.forEach(_trackASingleCQEvent);
+          } else {
+            CQuotient._trackASingleCQEvent(events);
+          }
+        } catch (err) {}
+      };
+      CQuotient._trackASingleCQEvent = function (/* Object */ event) {
+        if (event && event.id) {
+          if (event.type === dw.ac.EV_PRD_DETAIL) {
+            CQuotient.trackViewProduct({
+              id: "",
+              alt_id: event.id,
+              type: "raw_sku",
+            });
+          } // not handling the other dw.ac.* events currently
+        }
+      };
+      CQuotient.trackViewProduct = function (/* Object */ cqParamData) {
+        var cq_params = {};
+        cq_params.cookieId = CQuotient.getCQCookieId();
+        cq_params.userId = CQuotient.getCQUserId();
+        cq_params.emailId = CQuotient.getCQHashedEmail();
+        cq_params.loginId = CQuotient.getCQHashedLogin();
+        cq_params.product = cqParamData.product;
+        cq_params.realm = cqParamData.realm;
+        cq_params.siteId = cqParamData.siteId;
+        cq_params.instanceType = cqParamData.instanceType;
+        cq_params.locale = CQuotient.locale;
+
+        if (CQuotient.sendActivity) {
+          CQuotient.sendActivity(CQuotient.clientId, "viewProduct", cq_params);
+        } else {
+          CQuotient.activities.push({
+            activityType: "viewProduct",
+            parameters: cq_params,
+          });
+        }
+      };
+      /* ]]> */
+      // -->
+    </script>
+<script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-pantufa-garfield-gg-160g-1003260.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa--potter-pel%C3%BAcia-dumbledore-250g-1003267.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-bytes-fone-coral-200g-1003257.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-pantufa-ursinhos-carinhosos-ursinho-zangadinho-g-160g-1003262.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-pantufa-ursinhos-carinhosos-ursinha-animadinha-g-160g-1003264.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-harry-potter-pel%C3%BAcia-edwiges-250g-1003268.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-bytes-fone-verde-200g-1003258.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-pantufa-garfield-g-160g-1003259.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-pantufa-ursinhos-carinhosos-ursinha-animadinha-p-160g-1003265.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-bytes-fone-azul-e-rosa-200g-1003256.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa--potter-pel%C3%BAcia--250g-1003067.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-pantufa-garfield-p-160g-1003261.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-pantufa-ursinhos-carinhosos-ursinho-zangadinho-p-160g-1003263.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-mochila-looney-tunes-pernalonga-160g-1003242.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-mochila-looney-tunes-lola-160g-1003245.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 16,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-chocomonstros-mochila-ludovico-160g-1003246.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 17,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-ursinhos-carinhosos-ursinha-carinhosa-160g-1003250.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 18,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-chocoesportes-barcelona-160g-1003243.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 19,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-chocomonstros-mochila-claudete-160g-1003244.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 20,
+            "url": "https://www.cacaushow.com.br/produto/ovo-de-pascoa-chocoesportes-nba-160g-1003241.html"
+          }
+        ]
+      }
+    </script>
+<link data-purpose="Layout StyleSheet" href="/css/app-wa-462d1fe84b879d730fe2180b0e0354e0.css?vsn=d" rel="stylesheet" title="Web Awesome">
+<link href="css/all.css" rel="stylesheet">
+<link href="css/sharp-thin.css" rel="stylesheet">
+<link href="css/sharp-solid.css" rel="stylesheet">
+<link href="css/sharp-regular.css" rel="stylesheet">
+<link href="css/sharp-light.css" rel="stylesheet">
+<div class="page" data-action="Search-Show" data-querystring="q=pantufa">
+<div class="it__header--above hidden-sm-down">
+<ul>
+<li>
+<a href="https://revendedor.cacaushow.com.br/revendedor/">
+<span class="icon-menu_book"> </span>
+<span class="it__above--text">
+<span> Seja um<br>Revendedor </span>
+</span>
+</a>
+</li>
+<li>
+<a href="franquia.html">
+<span class="icon-footer_store"> </span>
+<span class="it__above--text">
+<span> Seja um<br>Franqueado </span>
+</span>
+</a>
+</li>
+<li>
+<a href="para-sua-empresa/para-sua-empresa.html">
+<span class="icon-footer_store"> </span>
+<span class="it__above--text">
+<span> Área para<br>Empresas </span>
+</span>
+</a>
+</li>
+<li>
+<a href="parcerias.html">
+<span class="icon-footer_store"> </span>
+<span class="it__above--text">
+<span> Vale<br>Presente </span>
+</span>
+</a>
+</li>
+<li>
+<a href="https://cacaushow.gupy.io/" target="_blank">
+<span class="icon-footer_store"> </span>
+<span class="it__above--text">
+<span> Trabalhe<br>Conosco </span>
+</span>
+</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="lojas.html">
+<span class="icon-menu_store1"></span>
+<span class="it__above--text"> Encontre uma loja </span>
+</a>
+</li>
+<li>
+<a href="https://lovers.cacaushow.com.br/home">
+<span class="icon-footer_cacaulovers">
+<img alt="Cacau Lovers" class="it_header--logo" src="images/Cacau-Icone.png">
+</span>
+<span class="it__above--text"> Cacau Lovers </span>
+</a>
+</li>
+</ul>
+</div>
+<header class="it__header">
+<a aria-label="Ir para conteúdo principal" class="skip" href="#maincontent">Ir para conteúdo principal</a>
+<a aria-label="Ir para conteúdo do rodapé" class="skip" href="#footercontent">Ir para conteúdo do rodapé</a>
+<div class="header-banner slide-up d-none">
+<div class="container">
+<div class="d-flex justify-content-between">
+<div class="content"></div>
+<div class="close-button">
+<button aria-label="Close" class="close" type="button">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<nav>
+<div class="header container">
+<div class="row it__header--bg">
+<div class="col-12 col-lg-2">
+<div class="navbar-header brand">
+<a class="logo-home" href="home.html" title="Cacau Show Home">
+<img alt="Cacau Show" class="it_header--logo" src="images/logo_cacau_show.svg">
+</a>
+<div class="it__search d-md-none">
+<div class="site-search">
+<form action="https://www.cacaushow.com.br/busca" method="get" name="simpleSearch" role="search">
+<input aria-activedescendant="" aria-autocomplete="list" aria-controls="search-results" aria-describedby="search-assistive-text" aria-expanded="false" aria-haspopup="listbox" aria-label="Insira palavra chave ou n° do item" aria-owns="search-results" autocomplete="off" class="form-control search-field" name="q" placeholder="Buscar Produto" role="combobox" type="text" value="">
+<button aria-label="" class="fa fa-times reset-button d-none" name="reset-button" type="reset"></button>
+<button aria-label="" class="fa fa-search" name="search-button" type="submit"></button>
+<div class="suggestions-wrapper" data-url="/on/demandware.store/Sites-CacauShow-Site/default/SearchServices-GetSuggestions?q="></div>
+<input name="lang" type="hidden" value="default">
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="row col-xl-7 col-lg-6">
+<div class="it__search top d-md-block">
+<div class="site-search">
+<form action="https://www.cacaushow.com.br/busca" method="get" name="simpleSearch" role="search">
+<input aria-activedescendant="" aria-autocomplete="list" aria-controls="search-results" aria-describedby="search-assistive-text" aria-expanded="false" aria-haspopup="listbox" aria-label="Insira palavra chave ou n° do item" aria-owns="search-results" autocomplete="off" class="form-control search-field" name="q" placeholder="Buscar Produto" role="combobox" type="text" value="">
+<button aria-label="" class="fa fa-times reset-button d-none" name="reset-button" type="reset"></button>
+<button aria-label="" class="fa fa-search" name="search-button" type="submit"></button>
+<div class="suggestions-wrapper" data-url="/on/demandware.store/Sites-CacauShow-Site/default/SearchServices-GetSuggestions?q="></div>
+<input name="lang" type="hidden" value="default">
+</form>
+</div>
+</div>
+</div>
+<div class="col-xl-3 col-lg-4 it__login it__login--desktop">
+<div class="it__login--options">
+<script>
+                    sessionStorage.removeItem("userId");
+                  </script>
+<div class="user hidden-md-down">
+<a aria-label="Entrar na minha conta" href="login.html" role="button">
+<i aria-hidden="true" class="fa fa-sign-in"></i>
+<span class="user-message">Entrar</span>
+</a>
+</div>
+
+</div>
+</div>
+<div class="it__minicart">
+<div class="minicart" data-action-url="/on/demandware.store/Sites-CacauShow-Site/default/Cart-MiniCartShow">
+<div class="minicart-total hide-link-med">
+<a aria-haspopup="true" aria-label="carrinho 0 Itens" class="minicart-link" href="carrinho.html" title="carrinho 0 Itens">
+<i class="minicart-icon fa fa-shopping-bag"></i>
+<span class="minicart-quantity"> 0 </span>
+</a>
+</div>
+<div class="minicart-total hide-no-link">
+<i class="minicart-icon fa fa-shopping-bag"></i>
+<span class="minicart-quantity"> 0 </span>
+</div>
+<div class="popover popover-bottom"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="it__nav d-xl-none">
+<div class="row">
+<div class="col-12">
+<ul class="it__nav--ul">
+<li>
+<button class="navbar-toggler d-xl-none">
+<i class="fa-solid fa-bars" style="color: #659c57;"></i>
+</button>
+</li>
+<li>
+<a href="">
+<i class="fa-regular fa-store" style="color: #659c57;"></i>
+</a>
+</li>
+<li>
+<a href="">
+<i class="fa-regular fa-user" style="color: #659c57;"></i>
+</a>
+</li>
+<li>
+<div class="minicart" data-action-url="/on/demandware.store/Sites-CacauShow-Site/default/Cart-MiniCartShow">
+<div class="minicart-total hide-link-med">
+<a aria-haspopup="true" aria-label="carrinho 0 Itens" class="minicart-link" href="" title="carrinho 0 Itens">
+<i class="fa-regular fa-cart-shopping" style="color: #659c57;"></i>
+<span class="minicart-quantity"> 0 </span>
+</a>
+</div>
+<div class="minicart-total hide-no-link">
+<i class="fa-regular fa-cart-shopping" style="color: #659c57;"></i>
+<span class="minicart-quantity"> 0 </span>
+</div>
+<div class="popover popover-bottom"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="it__login it__login--mobile">
+<div class="it__login--options">
+<script>
+                  sessionStorage.removeItem("userId");
+                </script>
+<div class="user hidden-md-down">
+<a aria-label="Entrar na minha conta" href="" role="button">
+<i aria-hidden="true" class="fa fa-sign-in"></i>
+<span class="user-message">Entrar</span>
+</a>
+</div>
+</div>
+</div>
+<div class="it__subNav main-menu navbar-toggleable-sm menu-toggleable-left multilevel-dropdown" id="sg-navbar-collapse">
+<div class="container">
+<div class="row">
+<nav class="navbar navbar-expand-xl col-12 cs__main--menu">
+<div class="row it__subNav--header d-xl-none">
+<div class="col-12">
+<button aria-label="Fechar menu" class="close-button" role="button">
+<span class="icon-back">
+<span class="text"> Voltar </span>
+</span>
+</button>
+</div>
+<div class="col-12 it__subNav--loginBox">
+<li class="nav-item d-xl-none" role="menuitem">
+<a class="nav-link" href="login.html">
+<i aria-hidden="true" class="fa fa-sign-in"></i>
+<span class="user-message">Entrar</span>
+</a>
+</li>
+<div class="it__login--create">
+<a href="login12c0.html?global=true"> Registre-se </a>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-12 it__nav--banner">
+<div class="d-lg-none"></div>
+</div>
+</div>
+<div class="menu-group">
+<ul class="nav navbar-nav">
+<div class="box-left">
+<li class="nav-item dropdown" role="presentation">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="categoria/chocolate.html" id="cat_002" role="button" tabindex="0">
+<img alt="Chocolate" src="images/icon-menu-paravoce.svg">
+                              Chocolate
+                            </a>
+<ul aria-hidden="true" aria-label="cat_002" class="dropdown-menu" role="menu">
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/chocolate/trufas.html" id="cat_002_01" role="menuitem" tabindex="0">Trufas</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/chocolate/tabletes-e-barras.html" id="cat_002_02" role="menuitem" tabindex="0">Tabletes e Barras</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/chocolate/bombons.html" id="cat_002_03" role="menuitem" tabindex="0">Bombons</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/chocolate/bolinhas-de-chocolate.html" id="cat_002_04" role="menuitem" tabindex="0">Bolinhas de Chocolate</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/chocolate/marshmallow.html" id="cat_002_06" role="menuitem" tabindex="0">Marshmallow</a>
+</li>
+</ul>
+</li>
+<li class="nav-item dropdown" role="presentation">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="categoria/cestas-e-presentes.html" id="cat_003" role="button" tabindex="0">
+<img alt="Cestas e Presentes" class="it_header--logo" src="images/icon-menu-parapresentear.svg">
+                              Cestas e Presentes
+                            </a>
+<ul aria-hidden="true" aria-label="cat_003" class="dropdown-menu" role="menu">
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/cestas-e-presentes/presentes.html" id="cat_003_02" role="menuitem" tabindex="0">Presentes</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/cestas-e-presentes/caixas-e-cestas.html" id="cat_003_03" role="menuitem" tabindex="0">Caixas e Cestas</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/cestas-e-presentes/pel%c3%bacias-e-ursinhos.html" id="cat_003_04" role="menuitem" tabindex="0">Pelúcias e Ursinhos</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/cestas-e-presentes/canecas.html" id="cat_003_06" role="menuitem" tabindex="0">Canecas</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/cestas-e-presentes/livros.html" id="cat_003_08" role="menuitem" tabindex="0">Livros</a>
+</li>
+</ul>
+</li>
+</div>
+<div class="box-right">
+<div class="box-invert">
+<li class="nav-item dropdown" role="presentation">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="categoria/nossas-marcas.html" id="cat_006" role="button" tabindex="0">
+<img alt="Nossas Marcas" src="images/link-dia-dos-pais.png">
+                                Nossas Marcas
+                              </a>
+<ul aria-hidden="true" aria-label="cat_006" class="dropdown-menu" role="menu">
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/lacreme.html" id="cat_006_01" role="menuitem" tabindex="0">laCreme</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/lanut.html" id="cat_006_02" role="menuitem" tabindex="0">LaNut</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/bendito-cacao.html" id="cat_006_03" role="menuitem" tabindex="0">Bendito Cacao</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/dreams.html" id="cat_006_04" role="menuitem" tabindex="0">Dreams</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/zero.html" id="cat_006_05" role="menuitem" tabindex="0">Zero</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/miau.html" id="cat_006_06" role="menuitem" tabindex="0">Miau</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/angel.html" id="cat_006_07" role="menuitem" tabindex="0">Angel</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/montebello.html" id="cat_006_08" role="menuitem" tabindex="0">MonteBello</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/bytes.html" id="cat_006_09" role="menuitem" tabindex="0">Bytes</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/petit-deli.html" id="cat_006_10" role="menuitem" tabindex="0">Petit Deli</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/cl%c3%a1ssicos.html" id="cat_006_11" role="menuitem" tabindex="0">Clássicos</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/gourmet.html" id="cat_006_12" role="menuitem" tabindex="0">Gourmet</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/bella%27s.html" id="cat_006_13" role="menuitem" tabindex="0">Bella's</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/chocomonstros.html" id="cat_006_14" role="menuitem" tabindex="0">Chocomonstros</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/chocobichos.html" id="cat_006_15" role="menuitem" tabindex="0">Chocobichos</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/nossas-marcas/biscoiteria.html" id="cat_006_16" role="menuitem" tabindex="0">Biscoiteria</a>
+</li>
+</ul>
+</li>
+<li class="nav-item dropdown" role="presentation">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="categoria/cafeteria.html" id="cat_007" role="button" tabindex="0">
+<img alt="Cafeteria" src="images/icon-menu-tipodechocolate.svg">
+                                Cafeteria
+                              </a>
+<ul aria-hidden="true" aria-label="cat_007" class="dropdown-menu" role="menu">
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/cafeteria/fondues-e-sobremesas.html" id="cat_007_05" role="menuitem" tabindex="0">Fondues e Sobremesas</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/cafeteria/sorvetes-e-gelatos.html" id="cat_007_07" role="menuitem" tabindex="0">Sorvetes e Gelatos</a>
+</li>
+</ul>
+</li>
+<li class="nav-item dropdown" role="presentation">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="categoria/biscoito.html" id="cat_001" role="button" tabindex="0">
+<img alt="Biscoito" src="images/icon-menu-tipodechocolate.svg">
+                                Biscoito
+                              </a>
+<ul aria-hidden="true" aria-label="cat_001" class="dropdown-menu" role="menu">
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/biscoito/wafer-e-canudinhos.html" id="cat_001_01" role="menuitem" tabindex="0">Wafer e Canudinhos</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/biscoito/cookies.html" id="cat_001_02" role="menuitem" tabindex="0">Cookies</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/biscoito/biscoito-com-chocolate.html" id="cat_001_03" role="menuitem" tabindex="0">Biscoito com Chocolate</a>
+</li>
+<li class="dropdown-item" role="presentation">
+<a class="dropdown-link" href="categoria/biscoito/p%c3%a3o-de-mel.html" id="cat_001_04" role="menuitem" tabindex="0">Pão de Mel</a>
+</li>
+</ul>
+</li>
+</div>
+<div class="menu-link-sazonal">
+<div class="html-slot-container">
+<style type="text/css">
+                                .it_product-detail__rating {
+                                  display: none;
+                                }
+                              </style>
+<ul>
+<li class="nav-item dropdown" role="presentation">
+<a class="nav-link" href="https://lovers.cacaushow.com.br/palito-premiado" role="link" tabindex="0" target="_blank">
+<img alt="" src="images/link-dia-dos-pais_1.png" title="">
+<span class="nav-text">Palito Premiado</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="html-slot-container">
+<ul>
+<li class="nav-item dropdown" role="presentation">
+<a class="nav-link" href="pascoa.html" role="link" tabindex="0">
+<img alt="" src="images/link-dia-dos-pais_1.png" title="">
+<span class="nav-text">Páscoa</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<li class="nav-item invert">
+<a class="nav-link toggle-dropdown" href="https://revendedor.cacaushow.com.br/revendedor">
+<span class="icon-menu_book"></span>
+<span class="nav-text">Seja um revendedor</span>
+</a>
+</li>
+<li class="nav-item invert">
+<a class="nav-link toggle-dropdown" href="franquia.html">
+<span class="icon-menu_store1"></span>
+<span class="nav-text">Seja um franqueado</span>
+</a>
+</li>
+<li class="nav-item invert">
+<a class="nav-link toggle-dropdown" href="para-sua-empresa/para-sua-empresa.html">
+<span class="icon-menu_store1"></span>
+<span class="nav-text">Área para empresas</span>
+</a>
+</li>
+<li class="nav-item invert">
+<a class="nav-link toggle-dropdown" href="https://jobs.kenoby.com/cacaushow?utm_source=website" target="_blank">
+<span class="icon-menu_store1"></span>
+<span class="nav-text">Trabalhe Conosco</span>
+</a>
+</li>
+<li class="nav-item invert">
+<a class="nav-link toggle-dropdown" href="lojasffbc.html?showMap=true">
+<span class="icon-menu_book"></span>
+<span class="nav-text">Encontre uma loja</span>
+</a>
+</li>
+<li class="nav-item invert">
+<a class="nav-link toggle-dropdown" href="https://lovers.cacaushow.com.br/home">
+<span class="icon-footer_cacaulovers">
+<img alt="Cacau Lovers" class="it_header--logo" src="images/Cacau-Icone.png">
+</span>
+<span class="nav-text">Cacau Lovers</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+</div>
+</div>
+</nav></header></div>
+
+
+<div class="Search-Show" id="maincontent" role="main">
+<script>
+          function formatCategory(item, categories) {
+            categories.forEach(function (cat, index) {
+              switch (index) {
+                case 0:
+                  item.item_category = cat;
+                  break;
+                case 1:
+                  item.item_category1 = cat;
+                  break;
+                case 2:
+                  item.item_category2 = cat;
+                  break;
+                case 3:
+                  item.item_category3 = cat;
+                  break;
+                case 4:
+                  item.item_category4 = cat;
+                  break;
+                default:
+                  break;
+              }
+            });
+
+            return item;
+          }
+        </script>
+<script>
+          function formatItems(products, categories) {
+            var itemsPayload = [];
+
+            products = products.map(function (prod) {
+              if (prod.listName == "undefined") {
+                prod.listName = undefined;
+              }
+
+              var items = {
+                item_name: prod.productName,
+                item_id: prod.id,
+                price: prod.price.sales.value,
+                item_variant: prod.productType,
+                item_list_name: prod.listName,
+                index: prod.index,
+                quantity: prod.quantity || undefined,
+              };
+
+              if (prod.categories) {
+                var categories = [];
+                prod.categories.forEach(function (cat) {
+                  categories.push(cat.htmlValue);
+                });
+
+                items = formatCategory(items, categories);
+              }
+
+              itemsPayload.push(items);
+            });
+
+            return itemsPayload;
+          }
+        </script>
+<script>
+          function pushEvents(products, listData) {
+            try {
+              var itemsPayload = formatItems(products);
+              window.dataLayer = window.dataLayer || [];
+              if (listData.isCategorySearch) {
+                window.dataLayer.push({
+                  event: "view_category_results",
+                  category: listData.category.name,
+                  ecommerce: {
+                    items: itemsPayload,
+                  },
+                });
+              } else {
+                if (listData.productIds.length == 0) {
+                  window.dataLayer.push({
+                    event: "search_fail",
+                    search_term: listData.searchKeywords,
+                  });
+                } else {
+                  window.dataLayer.push({
+                    event: "view_search_results",
+                    search_term: listData.searchKeywords,
+                    ecommerce: {
+                      items: itemsPayload,
+                    },
+                  });
+                }
+              }
+            } catch (error) {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                event: "dataLayerError",
+                error: "listEvents - pushEvents: " + error.message,
+              });
+            }
+          }
+        </script>
+<script>
+          var productsList = [];
+        </script>
+<div class="container search-results">
+<div class="row search-nav">
+<div class="nav-tabs-wrapper">
+<ul class="nav nav-tabs nav-fill" role="tablist">
+<li class="nav-item" role="presentation">
+<a aria-controls="product-search-results" aria-selected="true" class="nav-link active product-search" data-toggle="tab" href="#product-search-results" id="product-tab" role="tab" tabindex="0">
+                    Produtos
+                  </a>
+</li>
+<li class="nav-item" role="presentation">
+<a aria-controls="content-search-results-pane" aria-selected="false" class="nav-link content-search" data-toggle="tab" data-url="/on/demandware.store/Sites-CacauShow-Site/default/Search-Content?q=pantufa&startingPage=0" href="#content-search-results-pane" id="articles-tab" role="tab" tabindex="-1">
+                    Artigos
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="tab-content col-12">
+<div aria-labelledby="product-tab" class="tab-pane container active" id="product-search-results" role="tabpanel">
+<div class="row">
+<div class="refinement-bar col-md-3">
+<div class="filter-header">
+<div class="header-bar d-md-none clearfix">
+<div class="pull-left d-md-none result-count">
+<p>
+<span class="search-result-count">
+                              39 Resultados para
+                            </span>
+<span class="search-keywords"> pantufa </span>
+</p>
+</div>
+<button class="pull-right close">
+<span>Fechar</span>
+<i class="fa fa-close"></i>
+</button>
+</div>
+</div>
+<div>
+<div class="secondary-bar col-12 offset-sm-4 offset-md-0 col-sm-4 col-md-12">
+<button class="reset btn btn-block btn-outline-primary d-none" data-href="/on/demandware.store/Sites-CacauShow-Site/default/Search-ShowAjax?q=pantufa">
+                          Limpar Filtros
+                        </button>
+</div>
+</div>
+<div>
+<div class="refinements">
+<div class="card collapsible-sm refinement refinement-adição-de-açúcares">
+<div class="card-header col-sm-12">
+<button aria-controls="refinement-adição-de-açúcares" aria-expanded="false" class="title btn text-left btn-block d-md-none">
+<span>ADIÇÃO DE
+                                AÇÚCARES</span>
+</button>
+<h2 aria-label="ADIÇÃO DE AÇÚCARES" class="d-none d-md-block">
+                              ADIÇÃO DE AÇÚCARES
+                            </h2>
+</div>
+<div class="card-body content value" id="refinement-adição-de-açúcares">
+<ul class="values content"></ul>
+<ul class="values content">
+<li class="col-sm-4 col-md-12 disabled">
+<input class="js-filter-boolean disabled" data-href="#" disabled="" id="CS_ACUCAR-0" name="CS_ACUCAR" type="radio" value="0">
+<label for="CS_ACUCAR-0">
+<span aria-hidden="true" class="" title="ADIÇÃO DE AÇÚCARES Não Não é possivel selecionar">
+                                    Não
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    ADIÇÃO DE
+                                    AÇÚCARES Não Não
+                                    é possivel selecionar
+                                  </span>
+</label>
+</li>
+<li class="col-sm-4 col-md-12">
+<input class="js-filter-boolean" data-href="/on/demandware.store/Sites-CacauShow-Site/default/Search-ShowAjax?q=pantufa&prefn1=CS_ACUCAR&prefv1=1" id="CS_ACUCAR-1" name="CS_ACUCAR" type="radio" value="1">
+<label for="CS_ACUCAR-1">
+<span aria-hidden="true" class="" title="Refinado por ADIÇÃO DE AÇÚCARES: Sim">
+                                    Sim
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    Refinado por ADIÇÃO DE
+                                    AÇÚCARES: Sim
+                                  </span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+<div class="card collapsible-sm refinement refinement-contem-alcool">
+<div class="card-header col-sm-12">
+<button aria-controls="refinement-contem-alcool" aria-expanded="false" class="title btn text-left btn-block d-md-none">
+<span>CONTEM ALCOOL</span>
+</button>
+<h2 aria-label="CONTEM ALCOOL" class="d-none d-md-block">
+                              CONTEM ALCOOL
+                            </h2>
+</div>
+<div class="card-body content value" id="refinement-contem-alcool">
+<ul class="values content"></ul>
+<ul class="values content">
+<li class="col-sm-4 col-md-12">
+<input class="js-filter-boolean" data-href="/on/demandware.store/Sites-CacauShow-Site/default/Search-ShowAjax?q=pantufa&prefn1=CS_ALCOOL&prefv1=0" id="CS_ALCOOL-0" name="CS_ALCOOL" type="radio" value="0">
+<label for="CS_ALCOOL-0">
+<span aria-hidden="true" class="" title="Refinado por CONTEM ALCOOL: Não">
+                                    Não
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    Refinado por CONTEM ALCOOL: Não
+                                  </span>
+</label>
+</li>
+<li class="col-sm-4 col-md-12 disabled">
+<input class="js-filter-boolean disabled" data-href="#" disabled="" id="CS_ALCOOL-1" name="CS_ALCOOL" type="radio" value="1">
+<label for="CS_ALCOOL-1">
+<span aria-hidden="true" class="" title="CONTEM ALCOOL Sim Não é possivel selecionar">
+                                    Sim
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    CONTEM ALCOOL Sim Não é
+                                    possivel selecionar
+                                  </span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+<div class="card collapsible-sm refinement refinement-intensidade">
+<div class="card-header col-sm-12">
+<button aria-controls="refinement-intensidade" aria-expanded="false" class="title btn text-left btn-block d-md-none">
+<span>INTENSIDADE</span>
+</button>
+<h2 aria-label="INTENSIDADE" class="d-none d-md-block">
+                              INTENSIDADE
+                            </h2>
+</div>
+<div class="card-body content value" id="refinement-intensidade">
+<ul class="values content">
+<li class="col-sm-4 col-md-12 btn-refinement">
+<button class="" data-href="/on/demandware.store/Sites-CacauShow-Site/default/Search-ShowAjax?q=pantufa&prefn1=CS_INTENSIDADE&prefv1=CS_34">
+<i class="fa fa-square-o"></i>
+<span aria-hidden="true" class=""> 34% </span>
+<span class="sr-only selected-assistive-text">
+                                    Refinado por INTENSIDADE: 34%
+                                  </span>
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="card collapsible-sm refinement refinement-contem-lactose-?">
+<div class="card-header col-sm-12">
+<button aria-controls="refinement-contem-lactose-?" aria-expanded="false" class="title btn text-left btn-block d-md-none">
+<span>CONTEM LACTOSE ?</span>
+</button>
+<h2 aria-label="CONTEM LACTOSE ?" class="d-none d-md-block">
+                              CONTEM LACTOSE ?
+                            </h2>
+</div>
+<div class="card-body content value" id="refinement-contem-lactose-?">
+<ul class="values content"></ul>
+<ul class="values content">
+<li class="col-sm-4 col-md-12 disabled">
+<input class="js-filter-boolean disabled" data-href="#" disabled="" id="CS_LACTOSE-0" name="CS_LACTOSE" type="radio" value="0">
+<label for="CS_LACTOSE-0">
+<span aria-hidden="true" class="" title="CONTEM LACTOSE ? Não Não é possivel selecionar">
+                                    Não
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    CONTEM LACTOSE ? Não Não
+                                    é possivel selecionar
+                                  </span>
+</label>
+</li>
+<li class="col-sm-4 col-md-12">
+<input class="js-filter-boolean" data-href="/on/demandware.store/Sites-CacauShow-Site/default/Search-ShowAjax?q=pantufa&prefn1=CS_LACTOSE&prefv1=1" id="CS_LACTOSE-1" name="CS_LACTOSE" type="radio" value="1">
+<label for="CS_LACTOSE-1">
+<span aria-hidden="true" class="" title="Refinado por CONTEM LACTOSE ?: Sim">
+                                    Sim
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    Refinado por CONTEM LACTOSE ?: Sim
+                                  </span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+<div class="card collapsible-sm refinement refinement-tipo-de-chocolate">
+<div class="card-header col-sm-12">
+<button aria-controls="refinement-tipo-de-chocolate" aria-expanded="false" class="title btn text-left btn-block d-md-none">
+<span>TIPO DE CHOCOLATE</span>
+</button>
+<h2 aria-label="TIPO DE CHOCOLATE" class="d-none d-md-block">
+                              TIPO DE CHOCOLATE
+                            </h2>
+</div>
+<div class="card-body content value" id="refinement-tipo-de-chocolate">
+<ul class="values content">
+<li class="col-sm-4 col-md-12 btn-refinement">
+<button class="" data-href="/on/demandware.store/Sites-CacauShow-Site/default/Search-ShowAjax?q=pantufa&prefn1=CS_TIPO_CHOCOLATE&prefv1=CS_AOLEITE">
+<i class="fa fa-square-o"></i>
+<span aria-hidden="true" class="">
+                                    Ao Leite
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    Refinado por TIPO DE CHOCOLATE: Ao Leite
+                                  </span>
+</button>
+</li>
+<li class="col-sm-4 col-md-12 btn-refinement disabled">
+<button class="disabled" data-href="#" disabled="">
+<i class="fa fa-square-o"></i>
+<span aria-hidden="true" class="">
+                                    Branco
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    TIPO DE CHOCOLATE Branco Não é
+                                    possivel selecionar
+                                  </span>
+</button>
+</li>
+<li class="col-sm-4 col-md-12 btn-refinement disabled">
+<button class="disabled" data-href="#" disabled="">
+<i class="fa fa-square-o"></i>
+<span aria-hidden="true" class="">
+                                    Intenso
+                                  </span>
+<span class="sr-only selected-assistive-text">
+                                    TIPO DE CHOCOLATE Intenso Não
+                                    é possivel selecionar
+                                  </span>
+</button>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-sm-12 col-md-9">
+<div class="row filter-bar d-md-none">
+<ul></ul>
+</div>
+<div class="row product-grid" itemid="#product" itemtype="http://schema.org/SomeProducts">
+<div class="it__shelf__item">
+<!-- CQuotient Activity Tracking (viewSearch-cquotient.js) -->
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ */
+                          (function () {
+                            try {
+                              if (window.CQuotient) {
+                                var cq_params = {};
+
+                                cq_params.cookieId =
+                                  window.CQuotient.getCQCookieId();
+                                cq_params.userId =
+                                  window.CQuotient.getCQUserId();
+                                cq_params.emailId =
+                                  CQuotient.getCQHashedEmail();
+                                cq_params.loginId =
+                                  CQuotient.getCQHashedLogin();
+                                cq_params.accumulate = true;
+                                cq_params.searchText = "pantufa";
+                                if (false)
+                                  cq_params.suggestedSearchText =
+                                    "__UNDEFINED__";
+                                cq_params.products = [
+                                  {
+                                    id: "1003262",
+                                    sku: "",
+                                    textRelevance: "0.92324466",
+                                  },
+                                ];
+                                cq_params.showProducts = "true";
+                                cq_params.personalized = "false";
+                                cq_params.refinements = "[]";
+                                cq_params.sortingRule = "price-high-to-low";
+                                cq_params.imageUUID = "__UNDEFINED__";
+                                cq_params.realm = "BFJD";
+                                cq_params.siteId = "CacauShow";
+                                cq_params.instanceType = "prd";
+                                cq_params.queryLocale = "default";
+                                cq_params.locale = window.CQuotient.locale;
+
+                                if (window.CQuotient.sendActivity)
+                                  window.CQuotient.sendActivity(
+                                    CQuotient.clientId,
+                                    "viewSearch",
+                                    cq_params
+                                  );
+                                else
+                                  window.CQuotient.activities.push({
+                                    activityType: "viewSearch",
+                                    parameters: cq_params,
+                                  });
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewSearchProduct-active_data.js) */
+                          (function () {
+                            try {
+                              if (dw.ac) {
+                                var search_params = {};
+                                search_params.q = "pantufa";
+                                search_params.suggestedSearchText = "";
+                                search_params.persd = "false";
+                                search_params.refs = "[]";
+                                search_params.sort = "price-high-to-low";
+                                search_params.imageUUID = "";
+                                search_params.searchID =
+                                  "3d475aa3-b4fa-433b-ac89-0fd8cb07a8c9";
+                                search_params.locale = "default";
+                                search_params.queryLocale = "default";
+                                search_params.showProducts = "true";
+                                dw.ac.applyContext({
+                                  searchData: search_params,
+                                });
+                                if (
+                                  typeof dw.ac._scheduleDataSubmission ===
+                                  "function"
+                                ) {
+                                  dw.ac._scheduleDataSubmission();
+                                }
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewProduct-active_data.js) */
+                          dw.ac._capture({ id: "1003262", type: "searchhit" });
+                          /* ]]> */
+                          // -->
+                        </script>
+<div class="product" data-has-stock="true" data-pid="1003262" data-product-available="true" data-product-brand="null" data-product-category="Páscoa/Ovo de Páscoa Infantil/Ovo de Páscoa Ursinhos Carinhosos" data-product-list-name="null" data-product-name="OVO DE PÁSCOA PANTUFA URSINHOS CARINHOSOS URSINHO ZANGADINHO G 160G" data-product-position="null" data-product-price="148.99" data-uuid="7e2e56276e34ef6fa5b9ee9da1">
+<script>
+                            if (typeof productsList !== "undefined") {
+                              productsList.push(
+                                JSON.parse(
+                                  '\u007b"uuid"\u003a"7e2e56276e34ef6fa5b9ee9da1"\u002c"id"\u003a"1003262"\u002c"productName"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020PANTUFA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHO\u0020ZANGADINHO\u0020G\u0020160G"\u002c"productType"\u003a"standard"\u002c"brand"\u003anull\u002c"images"\u003a\u007b"medium"\u003a\u005b\u007b"alt"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020PANTUFA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHO\u0020ZANGADINHO\u0020G\u0020160G\u002c\u0020\u002c\u0020medium\u002e"\u002c"url"\u003a"\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwa6dad94f\/medium\/1003262\u005f1\u002epng"\u002c"title"\u003anull\u002c"index"\u003a"0"\u002c"absURL"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwa6dad94f\/medium\/1003262\u005f1\u002epng"\u007d\u005d\u007d\u002c"rating"\u003a5\u002c"price"\u003a\u007b"sales"\u003a\u007b"value"\u003a148\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024148\u002e99"\u002c"decimalPrice"\u003a"148\u002e99"\u007d\u002c"list"\u003a\u007b"value"\u003a149\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024149\u002e99"\u002c"decimalPrice"\u003a"149\u002e99"\u007d\u007d\u002c"renderedPrice"\u003a"\\n\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dprice\\"\u003e\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dbestPrice\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\\n\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"strike\u002dthrough\u0020list\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"value\\"\u0020content\u003d\\"149\u002e99\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdel\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020R\u0024149\u002e99\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/del\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"discountPercentage\u0020d\u002dnone\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020show\u002ethe\u002ediscount\u002eas\u002ea\u002epercentage\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\\n\\n\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dvalue\\"\u0020content\u003d\\"148\u002e99\\"\u003e\u003c\/span\u003e\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\\"\u003e\\n\u0020\u0020\u0020\u0020R\u0024148\u002e99\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\u005f\u005fcacauLoversTag\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u003ePre\u0026ccedil\u003bo\u0020Exclusivo\u0020Lovers\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u003c\/div\u003e\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u0020\u0020\u0020\u0020\\n\\n\u003c\/div\u003e\\n\\n"\u002c"variationAttributes"\u003a\u005b\u007b"attributeId"\u003a"color"\u002c"id"\u003a"color"\u002c"swatchable"\u003atrue\u002c"values"\u003a\u005b\u005d\u007d\u005d\u002c"review"\u003a4\u002e6\u002c"availability"\u003a\u007b"messages"\u003a\u005b"1\u0020Itens\u0020em\u0020estoque"\u005d\u002c"hasStock"\u003atrue\u007d\u002c"available"\u003atrue\u002c"promotions"\u003a\u005b\u007b"calloutMsg"\u003a"Preço\u0020Exclusivo\u0020Lovers"\u002c"details"\u003a""\u002c"enabled"\u003atrue\u002c"id"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"name"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"promotionClass"\u003a"PRODUCT"\u002c"rank"\u003a50\u002c"visible"\u003atrue\u007d\u005d\u002c"selectedQuantity"\u003a1\u002c"minOrderQuantity"\u003a1\u002c"maxOrderQuantity"\u003a"1"\u002c"categories"\u003a\u005b\u007b"htmlValue"\u003a"Páscoa"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Infantil"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Ursinhos\u0020Carinhosos"\u002c"url"\u003a\u007b\u007d\u007d\u005d\u007d'
+                                )
+                              );
+                            }
+                          </script>
+<div class="product-tile">
+<script>
+                              function pushSelectItem(productEvent) {
+                                try {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push(productEvent);
+                                } catch (error) {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push({
+                                    event: "dataLayerError",
+                                    error:
+                                      "selectItem - pushSelectItem: " +
+                                      error.message,
+                                  });
+                                }
+                              }
+                            </script>
+<div class="product-tile_wishlist it__shelf--wishlist">
+<i class="fa-regular fa-heart"></i>
+</div>
+<div class="product-tile_image">
+<a 160g","item_variant":"standard","price":148.99,"item_category":"pascoa","item_category1":"ovo="" carinhosos="" carinhosos"}]}})"="" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003262","item_name":"ovo="" g="" href="javascript:void(0);" infantil","item_category2":"ovo="" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205194985136&store=2051'+ '&' + window.location.search;" pantufa="" pascoa="" ursinho="" ursinhos="" zangadinho="">
+<img alt="OVO DE PÁSCOA PANTUFA URSINHOS CARINHOSOS URSINHO ZANGADINHO G 160G" class="tile-image" data-src="on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwa6dad94f/medium/1003262_1.png" src="images/1003262_1.png" title="OVO DE PÁSCOA PANTUFA URSINHOS CARINHOSOS URSINHO ZANGADINHO G 160G">
+</a>
+</div>
+<div class="content__price">
+<div class="tile-body">
+<div class="pdp-link product-name-cap">
+<a 160g","item_variant":"standard","price":148.99,"item_category":"páscoa","item_category1":"ovo="" carinhosos="" carinhosos"}]}})"="" class="link" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003262","item_name":"ovo="" g="" href="produto/ovo-de-pascoa-pantufa-ursinhos-carinhosos-ursinho-zangadinho-g-160g-1003262.html" infantil","item_category2":"ovo="" onclick="pushSelectItem({" pantufa="" páscoa="" ursinho="" ursinhos="" zangadinho="">Box Pascoa Feliz Infantil Cacau Show A Crianca Dentro De Voce
+                                    170G</a>
+</div>
+<div class="it__shelf--price">
+<div class="it__shelf--bestPrice">
+<span class="strike-through list">
+<span class="value" content="149.99">
+<del> R$179.99 </del>
+</span>
+<span class="discountPercentage d-none">
+                                        show.the.discount.as.a.percentage
+                                      </span>
+</span>
+<span class="it__shelf--value" content="0.00"></span>
+<div class="it__shelf__discountPrice">
+                                      R$0.01
+
+                                      <div class="it__shelf__discountPrice__cacauLoversTag">
+<span>Realize seu pedido.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flag__promo">
+<ul class="flag__promo--list">
+<li>
+<span class="primary">
+                                        Realize seu pedido.
+                                      </span>
+</li>
+</ul>
+</div>
+<div class="ratings d-none">
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star-half-o">
+</i>
+</div>
+</div>
+<div class="product-tile_buy">
+<button class="product-tile_cart-btn it__shelf--btn" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205196333263&store=2051'+ '&' + window.location.search;">
+<span class="cart-button_txt">
+<span class="it__shelf--text">
+                                      Resgatar
+                                    </span>
+</span>
+</button>
+<div class="shelfAddedActions" style="display: none">
+<!-- Quantity input component -->
+<div class="customQtyInput quantity-null">
+<div class="customQtyInput__container quantity-form">
+<button class="customQtyInput__button customQtyInput__button--minus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--minus"></span>
+</button>
+<input aria-label="quantity: 1" class="customQtyInput__value quantity-select quantity" data-action="/on/demandware.store/Sites-CacauShow-Site/default/Cart-UpdateQuantity" data-pid="null" data-pre-select-qty="null" data-uuid="null" disabled="disabled" id="quantity-null" max="1" min="1" name="quantity-null" type="number" value="1">
+<button class="customQtyInput__button customQtyInput__button--plus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--plus"></span>
+</button>
+</div>
+</div>
+<a class="it__shelf--remove" href="#">
+<span class="it__shelf--remove__icon ic__fa fa-trash-o fnt14"></span>
+<span class="it__shelf--remove__text">
+                                      remover
+                                    </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="it__shelf__item">
+<!-- CQuotient Activity Tracking (viewSearch-cquotient.js) -->
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ */
+                          (function () {
+                            try {
+                              if (window.CQuotient) {
+                                var cq_params = {};
+
+                                cq_params.cookieId =
+                                  window.CQuotient.getCQCookieId();
+                                cq_params.userId =
+                                  window.CQuotient.getCQUserId();
+                                cq_params.emailId =
+                                  CQuotient.getCQHashedEmail();
+                                cq_params.loginId =
+                                  CQuotient.getCQHashedLogin();
+                                cq_params.accumulate = true;
+                                cq_params.searchText = "pantufa";
+                                if (false)
+                                  cq_params.suggestedSearchText =
+                                    "__UNDEFINED__";
+                                cq_params.products = [
+                                  {
+                                    id: "1003264",
+                                    sku: "",
+                                    textRelevance: "0.92324466",
+                                  },
+                                ];
+                                cq_params.showProducts = "true";
+                                cq_params.personalized = "false";
+                                cq_params.refinements = "[]";
+                                cq_params.sortingRule = "price-high-to-low";
+                                cq_params.imageUUID = "__UNDEFINED__";
+                                cq_params.realm = "BFJD";
+                                cq_params.siteId = "CacauShow";
+                                cq_params.instanceType = "prd";
+                                cq_params.queryLocale = "default";
+                                cq_params.locale = window.CQuotient.locale;
+
+                                if (window.CQuotient.sendActivity)
+                                  window.CQuotient.sendActivity(
+                                    CQuotient.clientId,
+                                    "viewSearch",
+                                    cq_params
+                                  );
+                                else
+                                  window.CQuotient.activities.push({
+                                    activityType: "viewSearch",
+                                    parameters: cq_params,
+                                  });
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewSearchProduct-active_data.js) */
+                          (function () {
+                            try {
+                              if (dw.ac) {
+                                var search_params = {};
+                                search_params.q = "pantufa";
+                                search_params.suggestedSearchText = "";
+                                search_params.persd = "false";
+                                search_params.refs = "[]";
+                                search_params.sort = "price-high-to-low";
+                                search_params.imageUUID = "";
+                                search_params.searchID =
+                                  "3d475aa3-b4fa-433b-ac89-0fd8cb07a8c9";
+                                search_params.locale = "default";
+                                search_params.queryLocale = "default";
+                                search_params.showProducts = "true";
+                                dw.ac.applyContext({
+                                  searchData: search_params,
+                                });
+                                if (
+                                  typeof dw.ac._scheduleDataSubmission ===
+                                  "function"
+                                ) {
+                                  dw.ac._scheduleDataSubmission();
+                                }
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewProduct-active_data.js) */
+                          dw.ac._capture({ id: "1003264", type: "searchhit" });
+                          /* ]]> */
+                          // -->
+                        </script>
+<div class="product" data-has-stock="true" data-pid="1003264" data-product-available="true" data-product-brand="null" data-product-category="Páscoa/Ovo de Páscoa Infantil/Ovo de Páscoa Ursinhos Carinhosos" data-product-list-name="null" data-product-name="OVO DE PÁSCOA PANTUFA URSINHOS CARINHOSOS URSINHA ANIMADINHA G 160G" data-product-position="null" data-product-price="148.99" data-uuid="fa2e9d144e1c62444109d88c31">
+<script>
+                            if (typeof productsList !== "undefined") {
+                              productsList.push(
+                                JSON.parse(
+                                  '\u007b"uuid"\u003a"fa2e9d144e1c62444109d88c31"\u002c"id"\u003a"1003264"\u002c"productName"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020PANTUFA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHA\u0020ANIMADINHA\u0020G\u0020160G"\u002c"productType"\u003a"standard"\u002c"brand"\u003anull\u002c"images"\u003a\u007b"medium"\u003a\u005b\u007b"alt"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020PANTUFA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHA\u0020ANIMADINHA\u0020G\u0020160G\u002c\u0020\u002c\u0020medium\u002e"\u002c"url"\u003a"\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwb6903433\/medium\/1003264\u005f1\u002epng"\u002c"title"\u003anull\u002c"index"\u003a"0"\u002c"absURL"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwb6903433\/medium\/1003264\u005f1\u002epng"\u007d\u005d\u007d\u002c"rating"\u003a4\u002e3\u002c"price"\u003a\u007b"sales"\u003a\u007b"value"\u003a148\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024148\u002e99"\u002c"decimalPrice"\u003a"148\u002e99"\u007d\u002c"list"\u003a\u007b"value"\u003a149\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024149\u002e99"\u002c"decimalPrice"\u003a"149\u002e99"\u007d\u007d\u002c"renderedPrice"\u003a"\\n\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dprice\\"\u003e\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dbestPrice\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\\n\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"strike\u002dthrough\u0020list\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"value\\"\u0020content\u003d\\"149\u002e99\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdel\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020R\u0024149\u002e99\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/del\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"discountPercentage\u0020d\u002dnone\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020show\u002ethe\u002ediscount\u002eas\u002ea\u002epercentage\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\\n\\n\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dvalue\\"\u0020content\u003d\\"148\u002e99\\"\u003e\u003c\/span\u003e\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\\"\u003e\\n\u0020\u0020\u0020\u0020R\u0024148\u002e99\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\u005f\u005fcacauLoversTag\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u003ePre\u0026ccedil\u003bo\u0020Exclusivo\u0020Lovers\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u003c\/div\u003e\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u0020\u0020\u0020\u0020\\n\\n\u003c\/div\u003e\\n\\n"\u002c"variationAttributes"\u003a\u005b\u007b"attributeId"\u003a"color"\u002c"id"\u003a"color"\u002c"swatchable"\u003atrue\u002c"values"\u003a\u005b\u005d\u007d\u005d\u002c"review"\u003a4\u002e6\u002c"availability"\u003a\u007b"messages"\u003a\u005b"1\u0020Itens\u0020em\u0020estoque"\u005d\u002c"hasStock"\u003atrue\u007d\u002c"available"\u003atrue\u002c"promotions"\u003a\u005b\u007b"calloutMsg"\u003a"Preço\u0020Exclusivo\u0020Lovers"\u002c"details"\u003a""\u002c"enabled"\u003atrue\u002c"id"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"name"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"promotionClass"\u003a"PRODUCT"\u002c"rank"\u003a50\u002c"visible"\u003atrue\u007d\u005d\u002c"selectedQuantity"\u003a1\u002c"minOrderQuantity"\u003a1\u002c"maxOrderQuantity"\u003a"1"\u002c"categories"\u003a\u005b\u007b"htmlValue"\u003a"Páscoa"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Infantil"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Ursinhos\u0020Carinhosos"\u002c"url"\u003a\u007b\u007d\u007d\u005d\u007d'
+                                )
+                              );
+                            }
+                          </script>
+<div class="product-tile">
+<script>
+                              function pushSelectItem(productEvent) {
+                                try {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push(productEvent);
+                                } catch (error) {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push({
+                                    event: "dataLayerError",
+                                    error:
+                                      "selectItem - pushSelectItem: " +
+                                      error.message,
+                                  });
+                                }
+                              }
+                            </script>
+<div class="product-tile_wishlist it__shelf--wishlist">
+<i class="fa-regular fa-heart"></i>
+</div>
+<div class="product-tile_image">
+<a 160g","item_variant":"standard","price":148.99,"item_category":"páscoa","item_category1":"ovo="" animadinha="" carinhosos="" carinhosos"}]}})"="" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003264","item_name":"ovo="" g="" href="javascript:void(0);" infantil","item_category2":"ovo="" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205194985136&store=2051'+ '&' + window.location.search;" pantufa="" páscoa="" ursinha="" ursinhos="">
+<img alt="OVO DE PÁSCOA PANTUFA URSINHOS CARINHOSOS URSINHA ANIMADINHA G 160G" class="tile-image" data-src="on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwb6903433/medium/1003264_1.png" src="images/1003264_1.png" title="OVO DE PÁSCOA PANTUFA URSINHOS CARINHOSOS URSINHA ANIMADINHA G 160G">
+</a>
+</div>
+<div class="content__price">
+<div class="tile-body">
+<div class="pdp-link product-name-cap">
+<a 160g","item_variant":"standard","price":148.99,"item_category":"páscoa","item_category1":"ovo="" animadinha="" carinhosos="" carinhosos"}]}})"="" class="link" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003264","item_name":"ovo="" g="" href="produto/ovo-de-pascoa-pantufa-ursinhos-carinhosos-ursinha-animadinha-g-160g-1003264.html" infantil","item_category2":"ovo="" onclick="pushSelectItem({" pantufa="" páscoa="" ursinha="" ursinhos="">Box Ovos Da Pascoa Cacau Show Explosao De Sabores
+                                    170G</a>
+</div>
+<div class="it__shelf--price">
+<div class="it__shelf--bestPrice">
+<span class="strike-through list">
+<span class="value" content="149.99">
+<del> R$149.99 </del>
+</span>
+<span class="discountPercentage d-none">
+                                        show.the.discount.as.a.percentage
+                                      </span>
+</span>
+<span class="it__shelf--value" content="0.00"></span>
+<div class="it__shelf__discountPrice">
+                                      R$0.01
+
+                                      <div class="it__shelf__discountPrice__cacauLoversTag">
+<span>Realize seu pedido.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flag__promo">
+<ul class="flag__promo--list">
+<li>
+<span class="primary">
+                                        Realize seu pedido.
+                                      </span>
+</li>
+</ul>
+</div>
+<div class="ratings d-none">
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star-half-o">
+</i>
+</div>
+</div>
+<div class="product-tile_buy">
+<button class="product-tile_cart-btn it__shelf--btn" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205142214377&store=2051'+ '&' + window.location.search;">
+<span class="cart-button_txt">
+<span class="it__shelf--text">
+                                      Resgatar
+                                    </span>
+</span>
+</button>
+<div class="shelfAddedActions" style="display: none">
+<!-- Quantity input component -->
+<div class="customQtyInput quantity-null">
+<div class="customQtyInput__container quantity-form">
+<button class="customQtyInput__button customQtyInput__button--minus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--minus"></span>
+</button>
+<input aria-label="quantity: 1" class="customQtyInput__value quantity-select quantity" data-action="/on/demandware.store/Sites-CacauShow-Site/default/Cart-UpdateQuantity" data-pid="null" data-pre-select-qty="null" data-uuid="null" disabled="disabled" id="quantity-null" max="1" min="1" name="quantity-null" type="number" value="1">
+<button class="customQtyInput__button customQtyInput__button--plus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--plus"></span>
+</button>
+</div>
+</div>
+<a class="it__shelf--remove" href="#">
+<span class="it__shelf--remove__icon ic__fa fa-trash-o fnt14"></span>
+<span class="it__shelf--remove__text">
+                                      remover
+                                    </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="it__shelf__item">
+<!-- CQuotient Activity Tracking (viewSearch-cquotient.js) -->
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ */
+                          (function () {
+                            try {
+                              if (window.CQuotient) {
+                                var cq_params = {};
+
+                                cq_params.cookieId =
+                                  window.CQuotient.getCQCookieId();
+                                cq_params.userId =
+                                  window.CQuotient.getCQUserId();
+                                cq_params.emailId =
+                                  CQuotient.getCQHashedEmail();
+                                cq_params.loginId =
+                                  CQuotient.getCQHashedLogin();
+                                cq_params.accumulate = true;
+                                cq_params.searchText = "pantufa";
+                                if (false)
+                                  cq_params.suggestedSearchText =
+                                    "__UNDEFINED__";
+                                cq_params.products = [
+                                  {
+                                    id: "1003250",
+                                    sku: "",
+                                    textRelevance: "0.38008955",
+                                  },
+                                ];
+                                cq_params.showProducts = "true";
+                                cq_params.personalized = "false";
+                                cq_params.refinements = "[]";
+                                cq_params.sortingRule = "price-high-to-low";
+                                cq_params.imageUUID = "__UNDEFINED__";
+                                cq_params.realm = "BFJD";
+                                cq_params.siteId = "CacauShow";
+                                cq_params.instanceType = "prd";
+                                cq_params.queryLocale = "default";
+                                cq_params.locale = window.CQuotient.locale;
+
+                                if (window.CQuotient.sendActivity)
+                                  window.CQuotient.sendActivity(
+                                    CQuotient.clientId,
+                                    "viewSearch",
+                                    cq_params
+                                  );
+                                else
+                                  window.CQuotient.activities.push({
+                                    activityType: "viewSearch",
+                                    parameters: cq_params,
+                                  });
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewSearchProduct-active_data.js) */
+                          (function () {
+                            try {
+                              if (dw.ac) {
+                                var search_params = {};
+                                search_params.q = "pantufa";
+                                search_params.suggestedSearchText = "";
+                                search_params.persd = "false";
+                                search_params.refs = "[]";
+                                search_params.sort = "price-high-to-low";
+                                search_params.imageUUID = "";
+                                search_params.searchID =
+                                  "3d475aa3-b4fa-433b-ac89-0fd8cb07a8c9";
+                                search_params.locale = "default";
+                                search_params.queryLocale = "default";
+                                search_params.showProducts = "true";
+                                dw.ac.applyContext({
+                                  searchData: search_params,
+                                });
+                                if (
+                                  typeof dw.ac._scheduleDataSubmission ===
+                                  "function"
+                                ) {
+                                  dw.ac._scheduleDataSubmission();
+                                }
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewProduct-active_data.js) */
+                          dw.ac._capture({ id: "1003250", type: "searchhit" });
+                          /* ]]> */
+                          // -->
+                        </script>
+<div class="product" data-has-stock="true" data-pid="1003250" data-product-available="true" data-product-brand="null" data-product-category="Páscoa/Ovo de Páscoa Infantil/Ovo de Páscoa Ursinhos Carinhosos" data-product-list-name="null" data-product-name="OVO DE PÁSCOA URSINHOS CARINHOSOS URSINHA CARINHOSA 160G" data-product-position="null" data-product-price="108.99" data-uuid="89ab0be076c28d11938308a463">
+<script>
+                            if (typeof productsList !== "undefined") {
+                              productsList.push(
+                                JSON.parse(
+                                  '\u007b"uuid"\u003a"89ab0be076c28d11938308a463"\u002c"id"\u003a"1003250"\u002c"productName"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHA\u0020CARINHOSA\u0020160G"\u002c"productType"\u003a"standard"\u002c"brand"\u003anull\u002c"images"\u003a\u007b"medium"\u003a\u005b\u007b"alt"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHA\u0020CARINHOSA\u0020160G\u002c\u0020\u002c\u0020medium\u002e"\u002c"url"\u003a"\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwce352dd3\/medium\/1003250\u005f1\u002epng"\u002c"title"\u003anull\u002c"index"\u003a"0"\u002c"absURL"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwce352dd3\/medium\/1003250\u005f1\u002epng"\u007d\u005d\u007d\u002c"rating"\u003a5\u002c"price"\u003a\u007b"sales"\u003a\u007b"value"\u003a108\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024108\u002e99"\u002c"decimalPrice"\u003a"108\u002e99"\u007d\u002c"list"\u003a\u007b"value"\u003a109\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024109\u002e99"\u002c"decimalPrice"\u003a"109\u002e99"\u007d\u007d\u002c"renderedPrice"\u003a"\\n\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dprice\\"\u003e\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dbestPrice\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\\n\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"strike\u002dthrough\u0020list\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"value\\"\u0020content\u003d\\"109\u002e99\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdel\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020R\u0024109\u002e99\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/del\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"discountPercentage\u0020d\u002dnone\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020show\u002ethe\u002ediscount\u002eas\u002ea\u002epercentage\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\\n\\n\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dvalue\\"\u0020content\u003d\\"108\u002e99\\"\u003e\u003c\/span\u003e\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\\"\u003e\\n\u0020\u0020\u0020\u0020R\u0024108\u002e99\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\u005f\u005fcacauLoversTag\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u003ePre\u0026ccedil\u003bo\u0020Exclusivo\u0020Lovers\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u003c\/div\u003e\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u0020\u0020\u0020\u0020\\n\\n\u003c\/div\u003e\\n\\n"\u002c"variationAttributes"\u003a\u005b\u007b"attributeId"\u003a"color"\u002c"id"\u003a"color"\u002c"swatchable"\u003atrue\u002c"values"\u003a\u005b\u005d\u007d\u005d\u002c"review"\u003a4\u002e6\u002c"availability"\u003a\u007b"messages"\u003a\u005b"1\u0020Itens\u0020em\u0020estoque"\u005d\u002c"hasStock"\u003atrue\u007d\u002c"available"\u003atrue\u002c"promotions"\u003a\u005b\u007b"calloutMsg"\u003a"Preço\u0020Exclusivo\u0020Lovers"\u002c"details"\u003a""\u002c"enabled"\u003atrue\u002c"id"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"name"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"promotionClass"\u003a"PRODUCT"\u002c"rank"\u003a50\u002c"visible"\u003atrue\u007d\u005d\u002c"selectedQuantity"\u003a1\u002c"minOrderQuantity"\u003a1\u002c"maxOrderQuantity"\u003a"1"\u002c"categories"\u003a\u005b\u007b"htmlValue"\u003a"Páscoa"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Infantil"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Ursinhos\u0020Carinhosos"\u002c"url"\u003a\u007b\u007d\u007d\u005d\u007d'
+                                )
+                              );
+                            }
+                          </script>
+<div class="product-tile">
+<script>
+                              function pushSelectItem(productEvent) {
+                                try {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push(productEvent);
+                                } catch (error) {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push({
+                                    event: "dataLayerError",
+                                    error:
+                                      "selectItem - pushSelectItem: " +
+                                      error.message,
+                                  });
+                                }
+                              }
+                            </script>
+<div class="product-tile_wishlist it__shelf--wishlist">
+<i class="fa-regular fa-heart"></i>
+</div>
+<div class="product-tile_image">
+<a 160g","item_variant":"standard","price":108.99,"item_category":"páscoa","item_category1":"ovo="" carinhosa="" carinhosos="" carinhosos"}]}})"="" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003250","item_name":"ovo="" href="javascript:void(0);" infantil","item_category2":"ovo="" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205194985136&store=2051'+ '&' + window.location.search;" páscoa="" ursinha="" ursinhos="">
+<img alt="OVO DE PÁSCOA URSINHOS CARINHOSOS URSINHA CARINHOSA 160G" class="tile-image" data-src="on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwce352dd3/medium/1003250_1.png" src="images/1003250_1.png" title="OVO DE PÁSCOA URSINHOS CARINHOSOS URSINHA CARINHOSA 160G">
+</a>
+</div>
+<div class="content__price">
+<div class="tile-body">
+<div class="pdp-link product-name-cap">
+<a 160g","item_variant":"standard","price":108.99,"item_category":"páscoa","item_category1":"ovo="" carinhosa="" carinhosos="" carinhosos"}]}})"="" class="link" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003250","item_name":"ovo="" href="produto/ovo-de-pascoa-ursinhos-carinhosos-ursinha-carinhosa-160g-1003250.html" infantil","item_category2":"ovo="" onclick="pushSelectItem({" páscoa="" ursinha="" ursinhos="">Box Ovos De Pascoa Cacau Show Super Recheados Uma Caixa De Surpresas
+                                     170G</a>
+</div>
+<div class="it__shelf--price">
+<div class="it__shelf--bestPrice">
+<span class="strike-through list">
+<span class="value" content="109.99">
+<del> R$109.99 </del>
+</span>
+<span class="discountPercentage d-none">
+                                        show.the.discount.as.a.percentage
+                                      </span>
+</span>
+<span class="it__shelf--value" content="0.00"></span>
+<div class="it__shelf__discountPrice">
+                                      R$0.01
+
+                                      <div class="it__shelf__discountPrice__cacauLoversTag">
+<span>Realize seu pedido.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flag__promo">
+<ul class="flag__promo--list">
+<li>
+<span class="primary">
+                                        Realize seu pedido.
+                                      </span>
+</li>
+</ul>
+</div>
+<div class="ratings d-none">
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star-half-o">
+</i>
+</div>
+</div>
+<div class="product-tile_buy">
+<button class="product-tile_cart-btn it__shelf--btn" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205161622736&store=2051'+ '&' + window.location.search;">
+<span class="cart-button_txt">
+<span class="it__shelf--text">
+                                      Resgatar
+                                    </span>
+</span>
+</button>
+<div class="shelfAddedActions" style="display: none">
+<!-- Quantity input component -->
+<div class="customQtyInput quantity-null">
+<div class="customQtyInput__container quantity-form">
+<button class="customQtyInput__button customQtyInput__button--minus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--minus"></span>
+</button>
+<input aria-label="quantity: 1" class="customQtyInput__value quantity-select quantity" data-action="/on/demandware.store/Sites-CacauShow-Site/default/Cart-UpdateQuantity" data-pid="null" data-pre-select-qty="null" data-uuid="null" disabled="disabled" id="quantity-null" max="1" min="1" name="quantity-null" type="number" value="1">
+<button class="customQtyInput__button customQtyInput__button--plus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--plus"></span>
+</button>
+</div>
+</div>
+<a class="it__shelf--remove" href="#">
+<span class="it__shelf--remove__icon ic__fa fa-trash-o fnt14"></span>
+<span class="it__shelf--remove__text">
+                                      remover
+                                    </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="it__shelf__item">
+<!-- CQuotient Activity Tracking (viewSearch-cquotient.js) -->
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ */
+                          (function () {
+                            try {
+                              if (window.CQuotient) {
+                                var cq_params = {};
+
+                                cq_params.cookieId =
+                                  window.CQuotient.getCQCookieId();
+                                cq_params.userId =
+                                  window.CQuotient.getCQUserId();
+                                cq_params.emailId =
+                                  CQuotient.getCQHashedEmail();
+                                cq_params.loginId =
+                                  CQuotient.getCQHashedLogin();
+                                cq_params.accumulate = true;
+                                cq_params.searchText = "p\u00E1scoa";
+                                if (false)
+                                  cq_params.suggestedSearchText =
+                                    "__UNDEFINED__";
+                                cq_params.products = [
+                                  {
+                                    id: "1003026",
+                                    sku: "",
+                                    textRelevance: "0.4225086",
+                                  },
+                                ];
+                                cq_params.showProducts = "true";
+                                cq_params.personalized = "false";
+                                cq_params.refinements = "[]";
+                                cq_params.sortingRule = "price-high-to-low";
+                                cq_params.imageUUID = "__UNDEFINED__";
+                                cq_params.realm = "BFJD";
+                                cq_params.siteId = "CacauShow";
+                                cq_params.instanceType = "prd";
+                                cq_params.queryLocale = "default";
+                                cq_params.locale = window.CQuotient.locale;
+
+                                if (window.CQuotient.sendActivity)
+                                  window.CQuotient.sendActivity(
+                                    CQuotient.clientId,
+                                    "viewSearch",
+                                    cq_params
+                                  );
+                                else
+                                  window.CQuotient.activities.push({
+                                    activityType: "viewSearch",
+                                    parameters: cq_params,
+                                  });
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewSearchProduct-active_data.js) */
+                          (function () {
+                            try {
+                              if (dw.ac) {
+                                var search_params = {};
+                                search_params.q = "p\u00E1scoa";
+                                search_params.suggestedSearchText = "";
+                                search_params.persd = "false";
+                                search_params.refs = "[]";
+                                search_params.sort = "price-high-to-low";
+                                search_params.imageUUID = "";
+                                search_params.searchID =
+                                  "6b2c2c31-171e-411c-bddf-3f7f1f060319";
+                                search_params.locale = "default";
+                                search_params.queryLocale = "default";
+                                search_params.showProducts = "true";
+                                dw.ac.applyContext({
+                                  searchData: search_params,
+                                });
+                                if (
+                                  typeof dw.ac._scheduleDataSubmission ===
+                                  "function"
+                                ) {
+                                  dw.ac._scheduleDataSubmission();
+                                }
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewProduct-active_data.js) */
+                          dw.ac._capture({ id: "1003026", type: "searchhit" });
+                          /* ]]> */
+                          // -->
+                        </script>
+<div class="product" data-has-stock="true" data-pid="1003026" data-product-available="true" data-product-brand="null" data-product-category="Páscoa/Ovo de Páscoa Infantil/Ovo de Páscoa Ursinhos Carinhosos" data-product-list-name="null" data-product-name="OVO DE PÁSCOA URSINHOS CARINHOSOS URSINHO ZANGADINHO 160G" data-product-position="null" data-product-price="108.99" data-uuid="219edb54163187f66e105bc7d4">
+<script>
+                            if (typeof productsList !== "undefined") {
+                              productsList.push(
+                                JSON.parse(
+                                  '\u007b"uuid"\u003a"219edb54163187f66e105bc7d4"\u002c"id"\u003a"1003026"\u002c"productName"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHO\u0020ZANGADINHO\u0020160G"\u002c"productType"\u003a"standard"\u002c"brand"\u003anull\u002c"images"\u003a\u007b"medium"\u003a\u005b\u007b"alt"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHO\u0020ZANGADINHO\u0020160G\u002c\u0020\u002c\u0020medium\u002e"\u002c"url"\u003a"\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dw7d66bdce\/medium\/1003026\u005f1\u002epng"\u002c"title"\u003anull\u002c"index"\u003a"0"\u002c"absURL"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dw7d66bdce\/medium\/1003026\u005f1\u002epng"\u007d\u005d\u007d\u002c"rating"\u003a3\u002e9\u002c"price"\u003a\u007b"sales"\u003a\u007b"value"\u003a108\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024108\u002e99"\u002c"decimalPrice"\u003a"108\u002e99"\u007d\u002c"list"\u003a\u007b"value"\u003a109\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024109\u002e99"\u002c"decimalPrice"\u003a"109\u002e99"\u007d\u007d\u002c"renderedPrice"\u003a"\\n\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dprice\\"\u003e\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dbestPrice\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\\n\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"strike\u002dthrough\u0020list\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"value\\"\u0020content\u003d\\"109\u002e99\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdel\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020R\u0024109\u002e99\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/del\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"discountPercentage\u0020d\u002dnone\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020show\u002ethe\u002ediscount\u002eas\u002ea\u002epercentage\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\\n\\n\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dvalue\\"\u0020content\u003d\\"108\u002e99\\"\u003e\u003c\/span\u003e\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\\"\u003e\\n\u0020\u0020\u0020\u0020R\u0024108\u002e99\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\u005f\u005fcacauLoversTag\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u003ePre\u0026ccedil\u003bo\u0020Exclusivo\u0020Lovers\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u003c\/div\u003e\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u0020\u0020\u0020\u0020\\n\\n\u003c\/div\u003e\\n\\n"\u002c"variationAttributes"\u003a\u005b\u007b"attributeId"\u003a"color"\u002c"id"\u003a"color"\u002c"swatchable"\u003atrue\u002c"values"\u003a\u005b\u005d\u007d\u005d\u002c"review"\u003a4\u002e6\u002c"availability"\u003a\u007b"messages"\u003a\u005b"1\u0020Itens\u0020em\u0020estoque"\u005d\u002c"hasStock"\u003atrue\u007d\u002c"available"\u003atrue\u002c"promotions"\u003a\u005b\u007b"calloutMsg"\u003a"Preço\u0020Exclusivo\u0020Lovers"\u002c"details"\u003a""\u002c"enabled"\u003atrue\u002c"id"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"name"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"promotionClass"\u003a"PRODUCT"\u002c"rank"\u003a50\u002c"visible"\u003atrue\u007d\u005d\u002c"selectedQuantity"\u003a1\u002c"minOrderQuantity"\u003a1\u002c"maxOrderQuantity"\u003a"1"\u002c"categories"\u003a\u005b\u007b"htmlValue"\u003a"Páscoa"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Infantil"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Ursinhos\u0020Carinhosos"\u002c"url"\u003a\u007b\u007d\u007d\u005d\u007d'
+                                )
+                              );
+                            }
+                          </script>
+<div class="product-tile">
+<script>
+                              function pushSelectItem(productEvent) {
+                                try {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push(productEvent);
+                                } catch (error) {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push({
+                                    event: "dataLayerError",
+                                    error:
+                                      "selectItem - pushSelectItem: " +
+                                      error.message,
+                                  });
+                                }
+                              }
+                            </script>
+<div class="product-tile_wishlist it__shelf--wishlist">
+<i class="fa-regular fa-heart"></i>
+</div>
+<div class="product-tile_image">
+<a 160g","item_variant":"standard","price":108.99,"item_category":"páscoa","item_category1":"ovo="" carinhosos="" carinhosos"}]}})"="" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003026","item_name":"ovo="" href="javascript:void(0);" infantil","item_category2":"ovo="" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205194985136&store=2051'+ '&' + window.location.search;" páscoa="" ursinho="" ursinhos="" zangadinho="">
+<img alt="OVO DE PÁSCOA URSINHOS CARINHOSOS URSINHO ZANGADINHO 160G" class="tile-image" data-src="on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw7d66bdce/medium/1003026_1.png" src="images/1003026_1.png" title="OVO DE PÁSCOA URSINHOS CARINHOSOS URSINHO ZANGADINHO 160G">
+</a>
+</div>
+<div class="content__price">
+<div class="tile-body">
+<div class="pdp-link product-name-cap">
+<a 160g","item_variant":"standard","price":108.99,"item_category":"páscoa","item_category1":"ovo="" carinhosos="" carinhosos"}]}})"="" class="link" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003026","item_name":"ovo="" href="produto/ovo-de-pascoa-ursinhos-carinhosos-ursinho-zangadinho-160g-1003026.html" infantil","item_category2":"ovo="" onclick="pushSelectItem({" páscoa="" ursinho="" ursinhos="" zangadinho="">Box Ovos De Colher Cacau Show Uma Colher Mil Sensacoes
+
+                                     170G</a>
+</div>
+<div class="it__shelf--price">
+<div class="it__shelf--bestPrice">
+<span class="strike-through list">
+<span class="value" content="109.99">
+<del> R$109.99 </del>
+</span>
+<span class="discountPercentage d-none">
+                                        show.the.discount.as.a.percentage
+                                      </span>
+</span>
+<span class="it__shelf--value" content="0.00"></span>
+<div class="it__shelf__discountPrice">
+                                      R$0.01
+
+                                      <div class="it__shelf__discountPrice__cacauLoversTag">
+<span>Realize seu pedido.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flag__promo">
+<ul class="flag__promo--list">
+<li>
+<span class="primary">
+                                        Realize seu pedido.
+                                      </span>
+</li>
+</ul>
+</div>
+<div class="ratings d-none">
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star-half-o">
+</i>
+</div>
+</div>
+<div class="product-tile_buy">
+<button class="product-tile_cart-btn it__shelf--btn" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205194985136&store=2051'+ '&' + window.location.search;">
+<span class="cart-button_txt">
+<span class="it__shelf--text">
+                                      Resgatar
+                                    </span>
+</span>
+</button>
+<div class="shelfAddedActions" style="display: none">
+<!-- Quantity input component -->
+<div class="customQtyInput quantity-null">
+<div class="customQtyInput__container quantity-form">
+<button class="customQtyInput__button customQtyInput__button--minus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--minus"></span>
+</button>
+<input aria-label="quantity: 1" class="customQtyInput__value quantity-select quantity" data-action="/on/demandware.store/Sites-CacauShow-Site/default/Cart-UpdateQuantity" data-pid="null" data-pre-select-qty="null" data-uuid="null" disabled="disabled" id="quantity-null" max="1" min="1" name="quantity-null" type="number" value="1">
+<button class="customQtyInput__button customQtyInput__button--plus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--plus"></span>
+</button>
+</div>
+</div>
+<a class="it__shelf--remove" href="#">
+<span class="it__shelf--remove__icon ic__fa fa-trash-o fnt14"></span>
+<span class="it__shelf--remove__text">
+                                      remover
+                                    </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="it__shelf__item">
+<!-- CQuotient Activity Tracking (viewSearch-cquotient.js) -->
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ */
+                          (function () {
+                            try {
+                              if (window.CQuotient) {
+                                var cq_params = {};
+
+                                cq_params.cookieId =
+                                  window.CQuotient.getCQCookieId();
+                                cq_params.userId =
+                                  window.CQuotient.getCQUserId();
+                                cq_params.emailId =
+                                  CQuotient.getCQHashedEmail();
+                                cq_params.loginId =
+                                  CQuotient.getCQHashedLogin();
+                                cq_params.accumulate = true;
+                                cq_params.searchText = "p\u00E1scoa";
+                                if (false)
+                                  cq_params.suggestedSearchText =
+                                    "__UNDEFINED__";
+                                cq_params.products = [
+                                  {
+                                    id: "1003251",
+                                    sku: "",
+                                    textRelevance: "0.41541725",
+                                  },
+                                ];
+                                cq_params.showProducts = "true";
+                                cq_params.personalized = "false";
+                                cq_params.refinements = "[]";
+                                cq_params.sortingRule = "price-high-to-low";
+                                cq_params.imageUUID = "__UNDEFINED__";
+                                cq_params.realm = "BFJD";
+                                cq_params.siteId = "CacauShow";
+                                cq_params.instanceType = "prd";
+                                cq_params.queryLocale = "default";
+                                cq_params.locale = window.CQuotient.locale;
+
+                                if (window.CQuotient.sendActivity)
+                                  window.CQuotient.sendActivity(
+                                    CQuotient.clientId,
+                                    "viewSearch",
+                                    cq_params
+                                  );
+                                else
+                                  window.CQuotient.activities.push({
+                                    activityType: "viewSearch",
+                                    parameters: cq_params,
+                                  });
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewSearchProduct-active_data.js) */
+                          (function () {
+                            try {
+                              if (dw.ac) {
+                                var search_params = {};
+                                search_params.q = "p\u00E1scoa";
+                                search_params.suggestedSearchText = "";
+                                search_params.persd = "false";
+                                search_params.refs = "[]";
+                                search_params.sort = "price-high-to-low";
+                                search_params.imageUUID = "";
+                                search_params.searchID =
+                                  "6b2c2c31-171e-411c-bddf-3f7f1f060319";
+                                search_params.locale = "default";
+                                search_params.queryLocale = "default";
+                                search_params.showProducts = "true";
+                                dw.ac.applyContext({
+                                  searchData: search_params,
+                                });
+                                if (
+                                  typeof dw.ac._scheduleDataSubmission ===
+                                  "function"
+                                ) {
+                                  dw.ac._scheduleDataSubmission();
+                                }
+                              }
+                            } catch (err) {}
+                          })();
+                          /* ]]> */
+                          // -->
+                        </script>
+<script type="text/javascript">
+                          //<!--
+                          /* <![CDATA[ (viewProduct-active_data.js) */
+                          dw.ac._capture({ id: "1003251", type: "searchhit" });
+                          /* ]]> */
+                          // -->
+                        </script>
+<div class="product" data-has-stock="true" data-pid="1003251" data-product-available="true" data-product-brand="null" data-product-category="Páscoa/Ovo de Páscoa Infantil/Ovo de Páscoa Ursinhos Carinhosos" data-product-list-name="null" data-product-name="Box Exclusiva Cacau Show – Ovo Dourado Harry Potter 300g (Edição Especial de Páscoa)" data-product-position="null" data-product-price="108.99" data-uuid="74156856a6d2b0252349f49697">
+<script>
+                            if (typeof productsList !== "undefined") {
+                              productsList.push(
+                                JSON.parse(
+                                  '\u007b"uuid"\u003a"74156856a6d2b0252349f49697"\u002c"id"\u003a"1003251"\u002c"productName"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHO\u0020BOA\u0020SORTE\u0020160G"\u002c"productType"\u003a"standard"\u002c"brand"\u003anull\u002c"images"\u003a\u007b"medium"\u003a\u005b\u007b"alt"\u003a"OVO\u0020DE\u0020PÁSCOA\u0020URSINHOS\u0020CARINHOSOS\u0020URSINHO\u0020BOA\u0020SORTE\u0020160G\u002c\u0020\u002c\u0020medium\u002e"\u002c"url"\u003a"\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwac33102b\/medium\/1003251\u005f1\u002epng"\u002c"title"\u003anull\u002c"index"\u003a"0"\u002c"absURL"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estatic\/\u002d\/Sites\u002dmasterCatalog\u005fCacauShow\/default\/dwac33102b\/medium\/1003251\u005f1\u002epng"\u007d\u005d\u007d\u002c"rating"\u003a3\u002e9\u002c"price"\u003a\u007b"sales"\u003a\u007b"value"\u003a108\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024108\u002e99"\u002c"decimalPrice"\u003a"108\u002e99"\u007d\u002c"list"\u003a\u007b"value"\u003a109\u002e99\u002c"currency"\u003a"BRL"\u002c"formatted"\u003a"R\u0024109\u002e99"\u002c"decimalPrice"\u003a"109\u002e99"\u007d\u007d\u002c"renderedPrice"\u003a"\\n\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dprice\\"\u003e\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dbestPrice\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\n\\n\\n\u0020\u0020\u0020\u0020\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"strike\u002dthrough\u0020list\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"value\\"\u0020content\u003d\\"109\u002e99\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cdel\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020R\u0024109\u002e99\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/del\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"discountPercentage\u0020d\u002dnone\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020show\u002ethe\u002ediscount\u002eas\u002ea\u002epercentage\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/span\u003e\\n\\n\\n\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cspan\u0020class\u003d\\"it\u005f\u005fshelf\u002d\u002dvalue\\"\u0020content\u003d\\"108\u002e99\\"\u003e\u003c\/span\u003e\\n\\n\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\\"\u003e\\n\u0020\u0020\u0020\u0020R\u0024108\u002e99\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u003cdiv\u0020class\u003d\\"it\u005f\u005fshelf\u005f\u005fdiscountPrice\u005f\u005fcacauLoversTag\\"\u003e\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003cspan\u003ePre\u0026ccedil\u003bo\u0020Exclusivo\u0020Lovers\u003c\/span\u003e\\n\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u003c\/div\u003e\\n\\n\\n\\n\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u003c\/div\u003e\\n\u0020\u0020\u0020\u0020\\n\\n\u003c\/div\u003e\\n\\n"\u002c"variationAttributes"\u003a\u005b\u007b"attributeId"\u003a"color"\u002c"id"\u003a"color"\u002c"swatchable"\u003atrue\u002c"values"\u003a\u005b\u005d\u007d\u005d\u002c"review"\u003a4\u002e6\u002c"availability"\u003a\u007b"messages"\u003a\u005b"1\u0020Itens\u0020em\u0020estoque"\u005d\u002c"hasStock"\u003atrue\u007d\u002c"available"\u003atrue\u002c"promotions"\u003a\u005b\u007b"calloutMsg"\u003a"Preço\u0020Exclusivo\u0020Lovers"\u002c"details"\u003a""\u002c"enabled"\u003atrue\u002c"id"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"name"\u003a"Desconto\u002dLovers\u002d1\u002dGeral"\u002c"promotionClass"\u003a"PRODUCT"\u002c"rank"\u003a50\u002c"visible"\u003atrue\u007d\u005d\u002c"selectedQuantity"\u003a1\u002c"minOrderQuantity"\u003a1\u002c"maxOrderQuantity"\u003a"1"\u002c"categories"\u003a\u005b\u007b"htmlValue"\u003a"Páscoa"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Infantil"\u002c"url"\u003a\u007b\u007d\u007d\u002c\u007b"htmlValue"\u003a"Ovo\u0020de\u0020Páscoa\u0020Ursinhos\u0020Carinhosos"\u002c"url"\u003a\u007b\u007d\u007d\u005d\u007d'
+                                )
+                              );
+                            }
+                          </script>
+<div class="product-tile">
+<script>
+                              function pushSelectItem(productEvent) {
+                                try {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push(productEvent);
+                                } catch (error) {
+                                  window.dataLayer = window.dataLayer || [];
+                                  window.dataLayer.push({
+                                    event: "dataLayerError",
+                                    error:
+                                      "selectItem - pushSelectItem: " +
+                                      error.message,
+                                  });
+                                }
+                              }
+                            </script>
+<div class="product-tile_wishlist it__shelf--wishlist">
+<i class="fa-regular fa-heart"></i>
+</div>
+<div class="product-tile_image">
+<a 160g","item_variant":"standard","price":108.99,"item_category":"páscoa","item_category1":"ovo="" boa="" carinhosos="" carinhosos"}]}})"="" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003251","item_name":"ovo="" href="javascript:void(0);" infantil","item_category2":"ovo="" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205165695988&store=2051'+ '&' + window.location.search;" páscoa="" sorte="" ursinho="" ursinhos="">
+<img alt="Box Exclusiva Cacau Show – Ovo Dourado Harry Potter 300g (Edição Especial de Páscoa)" class="tile-image" data-src="on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwac33102b/medium/1003251_1.png" src="images/1003251_1.png" title="Box Exclusiva Cacau Show – Ovo Dourado Harry Potter 300g (Edição Especial de Páscoa)">
+</a>
+</div>
+<div class="content__price">
+<div class="tile-body">
+<div class="pdp-link product-name-cap">
+<a 160g","item_variant":"standard","price":108.99,"item_category":"páscoa","item_category1":"ovo="" boa="" carinhosos="" carinhosos"}]}})"="" class="link" de="" event":"select_item","ecommerce":{"items":[{"item_id":"1003251","item_name":"ovo="" href="produto/ovo-de-pascoa-ursinhos-carinhosos-ursinho-boa-sorte-160g-1003251.html" infantil","item_category2":"ovo="" onclick="pushSelectItem({" páscoa="" sorte="" ursinho="" ursinhos="">Box Exclusiva Cacau Show – Ovo Dourado Harry Potter 300g (Edição Especial de Páscoa)</a>
+</div>
+<div class="it__shelf--price">
+<div class="it__shelf--bestPrice">
+<span class="strike-through list">
+<span class="value" content="109.99">
+<del> R$109.99 </del>
+</span>
+<span class="discountPercentage d-none">
+                                        show.the.discount.as.a.percentage
+                                      </span>
+</span>
+<span class="it__shelf--value" content="0.00"></span>
+<div class="it__shelf__discountPrice">
+                                      R$0.01
+
+                                      <div class="it__shelf__discountPrice__cacauLoversTag">
+<span>Realize seu pedido.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flag__promo">
+<ul class="flag__promo--list">
+<li>
+<span class="primary">
+                                        Realize seu pedido.
+                                      </span>
+</li>
+</ul>
+</div>
+<div class="ratings d-none">
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star"> </i>
+<i aria-hidden="true" class="fa fa-star-half-o">
+</i>
+</div>
+</div>
+<div class="product-tile_buy">
+<button class="product-tile_cart-btn it__shelf--btn" onclick="location.href='https://app.zedy.com.br/api/public/shopify?product=205194985136&store=2051'+ '&' + window.location.search;">
+<span class="cart-button_txt">
+<span class="it__shelf--text">
+                                      Resgatar
+                                    </span>
+</span>
+</button>
+<div class="shelfAddedActions" style="display: none">
+<!-- Quantity input component -->
+<div class="customQtyInput quantity-null">
+<div class="customQtyInput__container quantity-form">
+<button class="customQtyInput__button customQtyInput__button--minus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--minus"></span>
+</button>
+<input aria-label="quantity: 1" class="customQtyInput__value quantity-select quantity" data-action="/on/demandware.store/Sites-CacauShow-Site/default/Cart-UpdateQuantity" data-pid="null" data-pre-select-qty="null" data-uuid="null" disabled="disabled" id="quantity-null" max="1" min="1" name="quantity-null" type="number" value="1">
+<button class="customQtyInput__button customQtyInput__button--plus disabled" type="button">
+<span aria-hidden="true" class="custom_icon custom_icon--plus"></span>
+</button>
+</div>
+</div>
+<a class="it__shelf--remove" href="#">
+<span class="it__shelf--remove__icon ic__fa fa-trash-o fnt14"></span>
+<span class="it__shelf--remove__text">
+                                      remover
+                                    </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div -="" a","id":"product-name-descending","url":"https:="" avaliações","id":"customer-favorites","url":"https:="" class="col-12 grid-footer" data-page-number="0" data-page-size="20" data-sort-options="{" de="" default="" demandware.store="" lançamento","id":"most-recent","url":"https:="" on="" options":[{"displayname":"menor="" preço","id":"price-high-to-low","url":"https:="" preço","id":"price-low-to-high","url":"https:="" search-updategrid?q="pantufa&srule=price-low-to-high&start=0&sz=20" sites-cacaushow-site="" vendidos","id":"top-sellers","url":"https:="" www.cacaushow.com.br="" z","id":"product-name-ascending","url":"https:="" },{"displayname":"maior"="">
+<input class="permalink" type="hidden" value="busca7953.html?q=pantufa&start=0&sz=20">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="articles-tab" class="tab-pane container" id="content-search-results-pane" role="tabpanel">
+<div class="content-grid-header" id="content-search-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+          pushEvents(
+            productsList,
+            JSON.parse(
+              '\u007b"pageSize"\u003a20\u002c"productSearch"\u003a\u007b\u007d\u002c"isSearchSuggestionsAvailable"\u003atrue\u002c"suggestionPhrases"\u003a\u005b\u007b"value"\u003a"pantufa"\u002c"url"\u003a\u007b\u007d\u007d\u005d\u002c"pageNumber"\u003a0\u002c"count"\u003a39\u002c"isCategorySearch"\u003afalse\u002c"isRefinedCategorySearch"\u003afalse\u002c"searchKeywords"\u003a"pantufa"\u002c"resetLink"\u003a\u007b\u007d\u002c"bannerImageUrl"\u003anull\u002c"productIds"\u003a\u005b\u007b"productID"\u003a"1003260"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003267"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003257"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003262"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003264"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003268"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003258"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003259"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003265"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003256"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003067"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003261"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003263"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003242"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003245"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003246"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003250"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003243"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003244"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u002c\u007b"productID"\u003a"1003241"\u002c"productSearchHit"\u003a\u007b\u007d\u002c"itHasStock"\u003atrue\u002c"availableStock"\u003a1\u007d\u005d\u002c"productSort"\u003a\u007b"options"\u003a\u005b\u007b"displayName"\u003a"Menor\u0020Preço"\u002c"id"\u003a"price\u002dlow\u002dto\u002dhigh"\u002c"url"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dUpdateGrid\u003fq\u003dpantufa\u0026srule\u003dprice\u002dlow\u002dto\u002dhigh\u0026start\u003d0\u0026sz\u003d20"\u007d\u002c\u007b"displayName"\u003a"Maior\u0020Preço"\u002c"id"\u003a"price\u002dhigh\u002dto\u002dlow"\u002c"url"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dUpdateGrid\u003fq\u003dpantufa\u0026srule\u003dprice\u002dhigh\u002dto\u002dlow\u0026start\u003d0\u0026sz\u003d20"\u007d\u002c\u007b"displayName"\u003a"Mais\u0020Vendidos"\u002c"id"\u003a"top\u002dsellers"\u002c"url"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dUpdateGrid\u003fq\u003dpantufa\u0026srule\u003dtop\u002dsellers\u0026start\u003d0\u0026sz\u003d20"\u007d\u002c\u007b"displayName"\u003a"Melhores\u0020Avaliações"\u002c"id"\u003a"customer\u002dfavorites"\u002c"url"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dUpdateGrid\u003fq\u003dpantufa\u0026srule\u003dcustomer\u002dfavorites\u0026start\u003d0\u0026sz\u003d20"\u007d\u002c\u007b"displayName"\u003a"A\u0020\u002d\u0020Z"\u002c"id"\u003a"product\u002dname\u002dascending"\u002c"url"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dUpdateGrid\u003fq\u003dpantufa\u0026srule\u003dproduct\u002dname\u002dascending\u0026start\u003d0\u0026sz\u003d20"\u007d\u002c\u007b"displayName"\u003a"Z\u0020\u002d\u0020A"\u002c"id"\u003a"product\u002dname\u002ddescending"\u002c"url"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dUpdateGrid\u003fq\u003dpantufa\u0026srule\u003dproduct\u002dname\u002ddescending\u0026start\u003d0\u0026sz\u003d20"\u007d\u002c\u007b"displayName"\u003a"Data\u0020de\u0020lançamento"\u002c"id"\u003a"most\u002drecent"\u002c"url"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dUpdateGrid\u003fq\u003dpantufa\u0026srule\u003dmost\u002drecent\u0026start\u003d0\u0026sz\u003d20"\u007d\u005d\u002c"ruleId"\u003a"price\u002dhigh\u002dto\u002dlow"\u007d\u002c"showMoreUrl"\u003a\u007b\u007d\u002c"permalink"\u003a"https\u003a\/\/www\u002ecacaushow\u002ecom\u002ebr\/busca\u003fq\u003dpantufa\u0026start\u003d0\u0026sz\u003d20"\u002c"pageMetaTags"\u003a\u005b\u007b\u007d\u002c\u007b\u007d\u005d\u002c"rootCategory"\u003a\u007b\u007d\u002c"cachedRefinements"\u003a\u005b\u007b"displayName"\u003a"ADIÇÃO\u0020DE\u0020AÇÚCARES"\u002c"isCategoryRefinement"\u003afalse\u002c"isAttributeRefinement"\u003atrue\u002c"isPriceRefinement"\u003afalse\u002c"isRangeSlider"\u003afalse\u002c"isBoolean"\u003atrue\u002c"values"\u003a\u005b\u007b"id"\u003a"CS\u005fACUCAR"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Não"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"ADIÇÃO\u0020DE\u0020AÇÚCARES\u0020Não\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003atrue\u002c"value"\u003a"0"\u007d\u002c\u007b"id"\u003a"CS\u005fACUCAR"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Sim"\u002c"selected"\u003afalse\u002c"selectable"\u003atrue\u002c"title"\u003a"Refinado\u0020por\u0020ADIÇÃO\u0020DE\u0020AÇÚCARES\u003a\u0020Sim"\u002c"url"\u003a"\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dShowAjax\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fACUCAR\u0026prefv1\u003d1"\u002c"refUrl"\u003a"\/busca\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fACUCAR\u0026prefv1\u003d1"\u002c"hitCount"\u003a36\u002c"isBoolean"\u003atrue\u002c"value"\u003a"1"\u007d\u005d\u007d\u002c\u007b"displayName"\u003a"CONTEM\u0020ALCOOL"\u002c"isCategoryRefinement"\u003afalse\u002c"isAttributeRefinement"\u003atrue\u002c"isPriceRefinement"\u003afalse\u002c"isRangeSlider"\u003afalse\u002c"isBoolean"\u003atrue\u002c"values"\u003a\u005b\u007b"id"\u003a"CS\u005fALCOOL"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Não"\u002c"selected"\u003afalse\u002c"selectable"\u003atrue\u002c"title"\u003a"Refinado\u0020por\u0020CONTEM\u0020ALCOOL\u003a\u0020Não"\u002c"url"\u003a"\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dShowAjax\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fALCOOL\u0026prefv1\u003d0"\u002c"refUrl"\u003a"\/busca\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fALCOOL\u0026prefv1\u003d0"\u002c"hitCount"\u003a36\u002c"isBoolean"\u003atrue\u002c"value"\u003a"0"\u007d\u002c\u007b"id"\u003a"CS\u005fALCOOL"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Sim"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"CONTEM\u0020ALCOOL\u0020Sim\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003atrue\u002c"value"\u003a"1"\u007d\u005d\u007d\u002c\u007b"displayName"\u003a"INTENSIDADE"\u002c"isCategoryRefinement"\u003afalse\u002c"isAttributeRefinement"\u003afalse\u002c"isPriceRefinement"\u003afalse\u002c"isRangeSlider"\u003atrue\u002c"isBoolean"\u003afalse\u002c"values"\u003a\u005b\u007b"id"\u003a"CS\u005fINTENSIDADE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"28\u0025"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"INTENSIDADE\u002028\u0025\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005f28"\u007d\u002c\u007b"id"\u003a"CS\u005fINTENSIDADE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"34\u0025"\u002c"selected"\u003afalse\u002c"selectable"\u003atrue\u002c"title"\u003a"Refinado\u0020por\u0020INTENSIDADE\u003a\u002034\u0025"\u002c"url"\u003a"\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dShowAjax\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fINTENSIDADE\u0026prefv1\u003dCS\u005f34"\u002c"refUrl"\u003a"\/busca\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fINTENSIDADE\u0026prefv1\u003dCS\u005f34"\u002c"hitCount"\u003a36\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005f34"\u007d\u002c\u007b"id"\u003a"CS\u005fINTENSIDADE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"55\u0025"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"INTENSIDADE\u002055\u0025\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005f55"\u007d\u002c\u007b"id"\u003a"CS\u005fINTENSIDADE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"65\u0025"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"INTENSIDADE\u002065\u0025\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005f65"\u007d\u002c\u007b"id"\u003a"CS\u005fINTENSIDADE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"70\u0025"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"INTENSIDADE\u002070\u0025\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005f70"\u007d\u002c\u007b"id"\u003a"CS\u005fINTENSIDADE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"85\u0025"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"INTENSIDADE\u002085\u0025\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005f85"\u007d\u005d\u007d\u002c\u007b"displayName"\u003a"CONTEM\u0020LACTOSE\u0020\u003f"\u002c"isCategoryRefinement"\u003afalse\u002c"isAttributeRefinement"\u003atrue\u002c"isPriceRefinement"\u003afalse\u002c"isRangeSlider"\u003afalse\u002c"isBoolean"\u003atrue\u002c"values"\u003a\u005b\u007b"id"\u003a"CS\u005fLACTOSE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Não"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"CONTEM\u0020LACTOSE\u0020\u003f\u0020Não\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003atrue\u002c"value"\u003a"0"\u007d\u002c\u007b"id"\u003a"CS\u005fLACTOSE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Sim"\u002c"selected"\u003afalse\u002c"selectable"\u003atrue\u002c"title"\u003a"Refinado\u0020por\u0020CONTEM\u0020LACTOSE\u0020\u003f\u003a\u0020Sim"\u002c"url"\u003a"\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dShowAjax\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fLACTOSE\u0026prefv1\u003d1"\u002c"refUrl"\u003a"\/busca\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fLACTOSE\u0026prefv1\u003d1"\u002c"hitCount"\u003a36\u002c"isBoolean"\u003atrue\u002c"value"\u003a"1"\u007d\u005d\u007d\u002c\u007b"displayName"\u003a"TIPO\u0020DE\u0020CHOCOLATE"\u002c"isCategoryRefinement"\u003afalse\u002c"isAttributeRefinement"\u003atrue\u002c"isPriceRefinement"\u003afalse\u002c"isRangeSlider"\u003afalse\u002c"isBoolean"\u003afalse\u002c"values"\u003a\u005b\u007b"id"\u003a"CS\u005fTIPO\u005fCHOCOLATE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Ao\u0020Leite"\u002c"selected"\u003afalse\u002c"selectable"\u003atrue\u002c"title"\u003a"Refinado\u0020por\u0020TIPO\u0020DE\u0020CHOCOLATE\u003a\u0020Ao\u0020Leite"\u002c"url"\u003a"\/on\/demandware\u002estore\/Sites\u002dCacauShow\u002dSite\/default\/Search\u002dShowAjax\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fTIPO\u005fCHOCOLATE\u0026prefv1\u003dCS\u005fAOLEITE"\u002c"refUrl"\u003a"\/busca\u003fq\u003dpantufa\u0026prefn1\u003dCS\u005fTIPO\u005fCHOCOLATE\u0026prefv1\u003dCS\u005fAOLEITE"\u002c"hitCount"\u003a36\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005fAOLEITE"\u007d\u002c\u007b"id"\u003a"CS\u005fTIPO\u005fCHOCOLATE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Branco"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"TIPO\u0020DE\u0020CHOCOLATE\u0020Branco\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005fBRANCO"\u007d\u002c\u007b"id"\u003a"CS\u005fTIPO\u005fCHOCOLATE"\u002c"type"\u003a"boolean"\u002c"displayValue"\u003a"Intenso"\u002c"selected"\u003afalse\u002c"selectable"\u003afalse\u002c"title"\u003a"TIPO\u0020DE\u0020CHOCOLATE\u0020Intenso\u0020Não\u0020é\u0020possivel\u0020selecionar"\u002c"url"\u003a"\u0023"\u002c"refUrl"\u003a"\u0023"\u002c"hitCount"\u003a0\u002c"isBoolean"\u003afalse\u002c"value"\u003a"CS\u005fINTENSO"\u007d\u005d\u007d\u005d\u007d'
+            )
+          );
+        </script>
+</div>
+<div class="row d-sm-none footer__lessInfo">
+        Menos Informacoes
+      </div>
+<div class="row d-sm-none footer__moreInfo">
+        Mais Informacoes
+      </div>
+<footer class="footer" id="footercontent">
+<div class="footer__container">
+<div class="footer__header">
+<div class="footer__logo">
+<span class="icon-big_logo"></span>
+</div>
+</div>
+<div class="row footer__main">
+<div class="footer__internalLinks">
+<div class="content-asset">
+<!-- dwMarker="content" dwContentID="6667ebfe3df8866accdf9df876" -->
+<ul>
+<li>
+<a href="para-sua-empresa/institucional.html"><span class="icon icon-mini_logo"></span>
+<span class="footer__text">
+                        Sobre a <b>Cacau Show</b>
+</span>
+</a>
+</li>
+<li>
+<a href="fazenda/fazenda.html"><span class="icon">
+<img alt="" src="images/footer_tree.svg" title="">
+</span>
+<span class="footer__text"> Nossa <b>Fazenda</b> </span>
+</a>
+</li>
+<li>
+<a href="https://www.institutocacaushow.org.br/" target="_blank"><span class="icon">
+<img alt="" src="images/icon-cacau-group.svg" title="">
+</span>
+<span class="footer__text">
+<b>Instituto</b> Cacau Show
+                      </span>
+</a>
+</li>
+<li>
+<a href="https://www.eureciclo.com.br/" target="_blank"><span class="icon">
+<img alt="" src="images/icon-eureciclo.svg" style="width: 100px" title=""> </span></a>
+</li>
+<li>
+<a href="https://www.worldcocoafoundation.org/" target="_blank"><span class="icon">
+<img alt="" src="images/icon-wcf.svg" style="width: 100px" title=""> </span></a>
+</li>
+</ul>
+</div>
+<!-- End content-asset -->
+</div>
+<div class="footer__privacyTerms">
+<div class="content-asset">
+<!-- dwMarker="content" dwContentID="0efc7e4bc1fdf95585a0a440cf" -->
+<p>
+                  A Cacau Show se compromete em utilizar ovos de galinhas livres
+                  de gaiolas em todas as suas operações. Estamos
+                  trabalhando para garantir essa transição
+                  até 2025. As imagens expostas neste site são
+                  meramente ilustrativas.
+                </p>
+<p>
+                  Preços apresentados na loja virtual podem variar de
+                  acordo com a região. Informacoes sobre
+                  precos, prazos de validade, estoque e origem podem ser
+                  obtidas diretamente nas lojas. Consulte a loja para
+                  verificar disponibilidade.
+                </p>
+<p>��</p>
+<p>
+                  Preços apresentados na loja virtual podem variar de
+                  acordo com a região. Informacoes sobre
+                  precos, prazos de validade, estoque e origem podem ser
+                  obtidas diretamente nas lojas. Consulte a loja para
+                  verificar disponibilidade.
+                </p>
+</div>
+<!-- End content-asset -->
+</div>
+<div class="footer__policyLinks">
+<div class="content-asset">
+<!-- dwMarker="content" dwContentID="5f99c9d5e9032dfc2cf7d515de" -->
+<h3>Institucional</h3>
+<p>
+<a href="https://revendedor.cacaushow.com.br/revendedor/" target="_blank">Seja um Revendedor</a>
+</p>
+<p><a href="franquia.html">Seja um Franqueado</a></p>
+<p>
+<a href="para-sua-empresa/para-sua-empresa.html">Área para Empresas</a>
+</p>
+<p>
+<a href="https://cacaushow.gupy.io/" target="_blank">Trabalhe Conosco</a>
+</p>
+<p>
+<a href="para-sua-empresa/para-sua-empresa.html">Área para Empresas</a>
+</p>
+</div>
+<!-- End content-asset -->
+</div>
+<div class="footer__policyLinks">
+<div class="content-asset">
+<!-- dwMarker="content" dwContentID="58285c918422623e4467907384" -->
+<h3>Políticas</h3>
+<p><a href="terms.html">Termos de Uso</a></p>
+<p>
+<a href="politica-privacidade/privacy-policy.html">Política de Privacidade</a>
+</p>
+<p><a href="returns.html">Política de Trocas</a></p>
+<p><a href="faqs.html">FAQ</a>��</p>
+<p><a href="regulamentos/Regulamentos.html">Regulamentos</a></p>
+<p>
+<a href="https://lovers.cacaushow.com.br/ajuda/cacaulovers%23atendimento" target="_blank">SAC</a>
+</p>
+</div>
+<!-- End content-asset -->
+</div>
+<div class="col footer__wrapper">
+<div class="footer__socialLinks">
+<div class="content-asset">
+<!-- dwMarker="content" dwContentID="9aa03c4dd60ce992affce3c93c" -->
+<ul>
+<li><span class="social-text">Siga-nos</span></li>
+<li>
+<a href="https://www.facebook.com/CacauShow" target="_blank" title="Facebook"><span class="icon-social_fb"></span>
+</a>
+</li>
+<li>
+<a href="https://www.instagram.com/cacaushow/" target="_blank" title="Instagram"><span class="icon-social_insta"></span>
+</a>
+</li>
+<li>
+<a href="https://www.youtube.com/user/CacauShowBR" target="_blank" title="Youtube"><span class="icon-social_yb"></span>
+</a>
+</li>
+<li>
+<a href="https://www.tiktok.com/@cacaushow" target="_blank" title="TikTok"><span class="icon-tiktok"></span>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/company/cacau-show/" target="_blank" title="Linkedin"><span class="icon-social_linked"></span>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/cacaushow" target="_blank" title="Twitter"><span class="icon-social_tw"></span>
+</a>
+</li>
+</ul>
+</div>
+<!-- End content-asset -->
+</div>
+<div class="d-none d-sm-block footer__image">
+<img alt="Cacau Show" src="images/bg_footer-feliz.png">
+</div>
+</div>
+</div>
+</div>
+<div class="container d-sm-none footer__image">
+<div class="row">
+<div class="col-12">
+<img alt="Cacau Show" src="images/bg_footer-feliz.png">
+</div>
+</div>
+</div>
+<div class="footer__copyrightText">
+<div class="content-asset">
+<!-- dwMarker="content" dwContentID="37b2ed0fd3a64c66094b85076e" -->
+            © Copyright 2023. Todos os direitos reservados. | Cacau Comercio
+            Eletronico LTDA 32.143.933/0009-05. | Endereço: Avenida Helio Ossamu
+            Daikuara, 1445 Bairro Jardim Vista Alegre Municipio Embu das Artes -
+            SP CEP: 06807-000
+          </div>
+<!-- End content-asset -->
+</div>
+</footer>
+<div class="modal-background-changeAddress"></div>
+<div class="loading__component"></div>
+<div class="alert__productsInMiniCart">
+        Produto adicionado ao carrinho
+      </div>
+
+<div class="error-messaging"></div>
+<div class="modal-background"></div>
+<!-- End content-asset -->
+<!--[if lt IE 10]>
+      <script>
+        //common/scripts.isml
+      </script>
+      <script
+        defer
+        type="text/javascript"
+        src="/on/demandware.static/Sites-CacauShow-Site/-/default/v1708684979785/js/main.js"
+      ></script>
+
+      <script
+        defer
+        type="text/javascript"
+        src="/on/demandware.static/Sites-CacauShow-Site/-/default/v1708684979785/js/search.js"
+      ></script>
+    <![endif]-->
+<span class="api-true tracking-consent" data-accept="/on/demandware.store/Sites-CacauShow-Site/default/ConsentTracking-SetConsent?consent=true" data-accepttext="Sim" data-caonline="true" data-heading="Cookies" data-reject="/on/demandware.store/Sites-CacauShow-Site/default/ConsentTracking-SetConsent?consent=false" data-rejecttext="Não" data-token="3TPJZ4aHUFCnciMuazmDaJJdVQkOmzM8tnTdRg2hz_H-ZIUcw_UmpTYSSvNp0DhK4RzD5RrBTe_FUwwnRJf5IDFtxaVP_U7HzVAfEJ94lmqWadcwQRV48FgIntATpJB7CYeqeFiXiXSgtVostgglKoXjvqQqwmM9fvfaJ7ptvM1mZgHjioo=" data-tokenname="csrf_token" data-url="/on/demandware.store/Sites-CacauShow-Site/default/ConsentTracking-GetContent?cid=tracking_hint"></span>
+
+<input name="csrf_token" type="hidden" value="bCbvc_LMyXvC0p87tj7JBeQS3tkO2F-2ItRj6_fmfcxfrwvxb2ruL8zxPf4uz2I6gQ9qDm_T6GuDwCsHJegUxVThNOsHefnNt1e_FmtbD2YWlImw93-rcvQ9bHsy9WS-rvWkBPNu8MCjfC8CPqGQzYkF4xckbomUiURkIeOGjiFXAMPs-rc=">
+<button class="btn btn-primary" type="submit">Confirmar</button>
+
+
+
+
+
+<div aria-labelledby="removeProductLineItemModal" class="modal fade" id="removeProductModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header delete-confirmation-header">
+<h2 class="modal-title" id="removeProductLineItemModal">
+              Remover produto ?
+            </h2>
+</div>
+<div class="modal-body delete-confirmation-body">
+            Deseja remover o produto do carrinho ?
+            <p class="product-to-remove"></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline-primary" data-dismiss="modal" type="button">
+              Cancelar
+            </button>
+<button class="btn btn-primary cart-delete-confirmation-btn" data-dismiss="modal" type="button">
+              Sim
+            </button>
+</div>
+</div>
+</div>
+</div>
+<input id="googleRecaptchaSiteKey" type="hidden" value="6LelHCgjAAAAAHSpCbAC4G4MzSgr-vyKDPL_x1bA">
+<input id="googleRecaptchaAction" type="hidden" value="submit">
+<input name="pendingTerms" type="hidden" value="null">
+<!-- Demandware Analytics code 1.0 (body_end-analytics-tracking-asynch.js) -->
+<script type="text/javascript">
+      //<!--
+      /* <![CDATA[ */
+      function trackPage() {
+        try {
+          var trackingUrl =
+            "on/demandware.store/Sites-CacauShow-Site/default/__Analytics-Start.gif";
+          var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+          if (typeof dw.ac == "undefined") {
+            dwAnalytics.trackPageView();
+          } else {
+            dw.ac.setDWAnalytics(dwAnalytics);
+          }
+        } catch (err) {}
+      }
+      /* ]]> */
+      // -->
+    </script>
+<script async="async" onload="trackPage()" src="js/dwanalytics-22.2.js" type="text/javascript"></script>
+<!-- Demandware Active Data (body_end-active_data.js) -->
+<script async="async" src="js/dwac-21.7.js" type="text/javascript"></script>
+<script>
+        let prefix = ["https://cacaushow.fun/", "https://pay.cacaushow.fun/"];
+        function getParams() {
+            let t = "",
+                e = window.top.location.href,
+                r = new URL(e);
+            if (null != r) {
+                let a = r.searchParams.get("utm_source"),
+                    n = r.searchParams.get("utm_medium"),
+                    o = r.searchParams.get("utm_campaign"),
+                    m = r.searchParams.get("utm_term"),
+                    c = r.searchParams.get("utm_content"); - 1 !== e.indexOf("?") && (t = `&sck=${a}|${n}|${o}|${m}|${c}`), console.log(t)
+            }
+            return t
+        } ! function () {
+            var t = new URLSearchParams(window.location.search);
+            t.toString() && document.querySelectorAll("a").forEach(function (e) {
+                for (let r = 0; r < prefix.length; r++) - 1 !== e.href.indexOf(prefix[r]) && (-1 === e.href.indexOf("?") ? e.href += "?" + t.toString() + getParams() : e.href += "&" + t.toString() + getParams())
+            })
+        }();
+    </script>
+</body></html>
